@@ -4,13 +4,25 @@ public sealed class Program
 {
     private static void Main(string[] _)
     {
-        double height = ReadDouble("Enter height in meters: ");
-        double weight = ReadDouble("Enter weight in kilograms: ");
-        double relation = CalculateBMI(height, weight);
-        Console.WriteLine(ToBmiRange(relation));
+        Run(InputDouble, InputDouble, OutputBmiRange);
     }
 
-    private static double ReadDouble(string message)
+    public static void Run(Func<string, double> readHeight, Func<string, double> readWeight, Action<BmiRange> writeOutput)
+    {
+        ArgumentNullException.ThrowIfNull(readHeight);
+        ArgumentNullException.ThrowIfNull(readWeight);
+        ArgumentNullException.ThrowIfNull(writeOutput);
+
+        double height = readHeight("Enter height in meters: ");
+        double weight = readWeight("Enter weight in kilograms: ");
+
+        double bmi = CalculateBMI(height, weight);
+        BmiRange bmiRange = ToBmiRange(bmi);
+
+        writeOutput(bmiRange);
+    }
+
+    public static double InputDouble(string message)
     {
         Console.Write(message);
         _ = double.TryParse(Console.ReadLine(), out double value);
@@ -30,6 +42,11 @@ public sealed class Program
             >= 25 => BmiRange.Overweight,
             _ => BmiRange.Healthy
         };
+    }
+
+    public static void OutputBmiRange(BmiRange bmiRange)
+    {
+        Console.WriteLine(bmiRange);
     }
 
     public enum BmiRange
