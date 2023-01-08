@@ -1,6 +1,6 @@
 ﻿namespace FunctionalProgramming.Exercises.Chapter02;
 
-internal sealed class Program
+public sealed class Program
 {
     private static void Main(string[] _)
     {
@@ -17,12 +17,12 @@ internal sealed class Program
         return value;
     }
 
-    private static double CalculateBMI(double height, double weight)
+    public static double CalculateBMI(double height, double weight)
     {
         return Math.Round(weight / Math.Pow(height, 2), 2);
     }
 
-    private static BmiRange ToBmiRange(double relation)
+    public static BmiRange ToBmiRange(double relation)
     {
         return relation switch
         {
