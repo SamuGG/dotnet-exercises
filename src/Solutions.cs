@@ -46,4 +46,13 @@ public static class Solutions
             .Concat(higherElements.Quicksort(comparison))
             .ToList();
     }
+
+    public static T Using<TDisp, T>(Func<TDisp> disposableProvider, Func<TDisp, T> f) where TDisp : IDisposable
+    {
+        ArgumentNullException.ThrowIfNull(disposableProvider);
+        ArgumentNullException.ThrowIfNull(f);
+        
+        using var disposable = disposableProvider();
+        return f(disposable);
+    }
 }
