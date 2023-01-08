@@ -24,4 +24,20 @@ public class Chapter02Tests
         var actual = Program.ToBmiRange(bmi);
         Assert.Equal(expected, actual);
     }
+
+    [Theory]
+    [InlineData(1.78, 58.3, BmiRange.Underweight)]
+    [InlineData(1.70, 62.5, BmiRange.Healthy)]
+    [InlineData(1.66, 82.7, BmiRange.Overweight)]
+    public void IntegrationTest(double height, double weight, BmiRange expected)
+    {
+        var readHeight = new Func<string, double>(_ => height);
+        var readWeight = new Func<string, double>(_ => weight);
+        BmiRange output = BmiRange.Healthy;
+        var writeOutput = new Action<BmiRange>(x => output = x);
+
+        Program.Run(readHeight, readWeight, writeOutput);
+
+        Assert.Equal(expected, output);
+    }
 }
