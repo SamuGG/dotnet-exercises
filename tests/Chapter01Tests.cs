@@ -13,4 +13,13 @@ public class Chapter01Tests
         bool actual = predicate.Negate(default);
         Assert.Equal(!predicateResult, actual);
     }
+
+    [Fact]
+    public void QuicksortReturnsNewListSorted()
+    {
+        var list = new List<int> { 5, 2, 3, 8, 4, 7, 1, 6 };
+        var actual = list.Quicksort();
+        Assert.NotSame(actual, list);
+        Assert.Equal(Enumerable.Range(1, 8), actual);
+    }
 }
