@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/chapter-01/Solutions.csproj",
+                "${workspaceFolder}/src/chapter-02/Solutions.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "clean",
-                "${workspaceFolder}/tests/chapter-01/SolutionsTests.csproj",
+                "${workspaceFolder}/tests/chapter-02/SolutionsTests.csproj",
             ],
             "problemMatcher": "$msCompile",
             "presentation": {

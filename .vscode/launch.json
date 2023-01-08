@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/tests/chapter-01/bin/Debug/net7.0/SolutionsTests.dll",
+            "program": "${workspaceFolder}/src/chapter-02/bin/Debug/net7.0/Solutions.dll",
             "args": [],
             "cwd": "${workspaceFolder}/tests",
             "console": "internalConsole",
