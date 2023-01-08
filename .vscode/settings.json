@@ -1,0 +1,5 @@
+{
+    "dotnet-test-explorer.addProblems": false,
+    "dotnet-test-explorer.enableTelemetry": false,
+    "dotnet-test-explorer.testProjectPath": "tests"
+}
