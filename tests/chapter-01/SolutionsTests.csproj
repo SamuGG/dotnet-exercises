@@ -31,6 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Solutions.csproj" />
+    <ProjectReference Include="..\..\src\chapter-01\Solutions.csproj" />
   </ItemGroup>
 </Project>
