@@ -31,4 +31,25 @@ public class Chapter01Tests
         Assert.NotSame(actual, list);
         Assert.Equal(Enumerable.Range(-3, 8).Select(x => (double)x), actual);
     }
+
+    [Fact]
+    public void UsingDisposableWrapsIt()
+    {
+        var disposableProvider = new Func<CharEnumerator>(() => "Hello".GetEnumerator());
+        var getFirstRepeatedChar = new Func<CharEnumerator, char>(d =>
+        {
+            char lastChar = '\0';
+            while (d.MoveNext())
+            {
+                if (d.Current == lastChar)
+                    return d.Current;
+                lastChar = d.Current;
+            }
+            return lastChar;
+        });
+
+        char repeatedChar = Solutions.Using(disposableProvider, getFirstRepeatedChar);
+
+        Assert.Equal('l', repeatedChar);
+    }
 }
