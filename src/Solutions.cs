@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace FunctionalProgramming.Exercises.Chapter01;
 
@@ -25,6 +25,25 @@ public static class Solutions
         return lowerElements.Quicksort()
             .Append(pivot)
             .Concat(higherElements.Quicksort())
+            .ToList();
+    }
+
+    [SuppressMessage("Design", "CA1002: Do not expose generic lists")]
+    public static List<T> Quicksort<T>(this List<T> list, Comparison<T> comparison)
+    {
+        ArgumentNullException.ThrowIfNull(list);
+        ArgumentNullException.ThrowIfNull(comparison);
+
+        if (list.Count == 0)
+            return list;
+
+        var pivot = list.First();
+        var lowerElements = list.Skip(1).Where(x => comparison(x, pivot) <= 0).ToList();
+        var higherElements = list.Skip(1).Where(x => 0 < comparison(x, pivot)).ToList();
+
+        return lowerElements.Quicksort(comparison)
+            .Append(pivot)
+            .Concat(higherElements.Quicksort(comparison))
             .ToList();
     }
 }
