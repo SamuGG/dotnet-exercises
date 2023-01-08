@@ -22,4 +22,13 @@ public class Chapter01Tests
         Assert.NotSame(actual, list);
         Assert.Equal(Enumerable.Range(1, 8), actual);
     }
+
+    [Fact]
+    public void QuicksortWithComparisonReturnsNewListSorted()
+    {
+        var list = new List<double> { 1, -2, -1, 4, 0, 3, -3, 2 };
+        var actual = list.Quicksort(Comparer<double>.Default.Compare);
+        Assert.NotSame(actual, list);
+        Assert.Equal(Enumerable.Range(-3, 8).Select(x => (double)x), actual);
+    }
 }
