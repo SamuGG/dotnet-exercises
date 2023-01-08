@@ -1,10 +1,16 @@
+using FunctionalProgramming.Exercises.Chapter01;
+
 namespace FunctionalProgramming.Exercises.Tests;
 
 public class Chapter01Tests
 {
-    [Fact]
-    public void Test1()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void PredicateIsNegated(bool predicateResult)
     {
-        Assert.True(true);
+        var predicate = new Func<object?, bool>(_ => predicateResult);
+        bool actual = predicate.Negate(default);
+        Assert.Equal(!predicateResult, actual);
     }
 }
