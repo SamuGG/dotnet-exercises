@@ -5,8 +5,8 @@
 
 ## Exercises by chapter
 
-- [Chapter 01](docs/chapter01.md)
-- [Chapter 02](docs/chapter02.md)
+- [Chapter 01](docs/chapter-01.md)
+- [Chapter 02](docs/chapter-02.md)
 
 ## Repository's Documentation
 
