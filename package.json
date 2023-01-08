@@ -1,0 +1,27 @@
+{
+  "name": "code-project-template",
+  "packageManager": "yarn@3.3.0",
+  "private": true,
+  "description": "Custom development automation toolset",
+  "version": "0.0.0",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "github:user/repo"
+  },
+  "scripts": {
+    "postinstall": "husky install",
+    "version": "auto-changelog --package && git add CHANGELOG.md"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "auto-changelog": "^2.4.0",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "semantic-release": "^19.0.5"
+  }
+}
