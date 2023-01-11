@@ -13,7 +13,8 @@
     "markdownlintignore",
     "releaserc",
     "samu",
-    "versionrc"
+    "versionrc",
+    "yumba"
   ],
   "flagWords": [
     "hte"
