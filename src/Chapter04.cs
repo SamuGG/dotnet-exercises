@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using LaYumba.Functional;
 
@@ -42,14 +43,26 @@ public static class Solutions
         //     w => HasExpired(w) ? F.None : F.Some(w)
         // );
     }
+
+    public static double AverageYearsWorkedAtTheCompany(ReadOnlyCollection<Employee> employees)
+    {
+        return employees.Bind(e => e.LeftOn.Map(endDate => YearsBetween(e.JoinedOn, endDate)))
+            .DefaultIfEmpty()
+            .Average();
+    }
+
+    static double YearsBetween(DateTime start, DateTime end)
+    {
+        return (end - start).Days / 365d;
+    }
 }
 
-public class Employee
+public record Employee
 {
     public string Id { get; set; } = string.Empty;
     public Option<WorkPermit> WorkPermit { get; set; }
-    public DateTime JoinedOn { get; }
-    public Option<DateTime> LeftOn { get; }
+    public DateTime JoinedOn { get; set; }
+    public Option<DateTime> LeftOn { get; set; }
 }
 
 [SuppressMessage("Performance", "CA1815: Override equals and operator equals on value types")]
