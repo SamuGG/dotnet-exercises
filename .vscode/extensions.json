@@ -1,6 +1,7 @@
 {
 	"recommendations": [
-		"visualstudioexptteam.vscodeintellicode"
+		"visualstudioexptteam.vscodeintellicode",
+		"formulahendry.dotnet-test-explorer"
 	],
 	"unwantedRecommendations": [
 		"christian-kohler.npm-intellisense",
