@@ -13,6 +13,7 @@
     "markdownlintignore",
     "releaserc",
     "samu",
+    "struct",
     "versionrc",
     "yumba"
   ],
