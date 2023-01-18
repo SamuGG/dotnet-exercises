@@ -1,4 +1,5 @@
 using FunctionalProgramming.Exercises.Chapter04;
+using FP = LaYumba.Functional;
 
 namespace FunctionalProgramming.Exercises.Tests.Chapter04;
 
@@ -40,5 +41,47 @@ public class SolutionsTests
             {5, 50}
         };
         Assert.Equal(expected, actual);
+    }
+
+    public static TheoryData<FP.Option<int>, FP.Option<DayOfWeek>> MapOptionTestData => new()
+    {
+        { FP.F.Some(1) , FP.F.Some(DayOfWeek.Monday) },
+        { FP.F.Some(2) , FP.F.Some(DayOfWeek.Tuesday) },
+        { FP.F.None, FP.F.None }
+    };
+
+    [Theory]
+    [MemberData(nameof(MapOptionTestData))]
+    public void MapOptionOfIntToOptionOfDay(FP.Option<int> dayNumber, FP.Option<DayOfWeek> dayOfWeek)
+    {
+        var dayNumberToDayOfWeek = new Func<int, DayOfWeek>(i => (DayOfWeek)i);
+
+        var actual = dayNumber.Map(dayNumberToDayOfWeek);
+
+        Assert.Equal(dayOfWeek, actual);
+    }
+
+    public static TheoryData<IEnumerable<int>, IEnumerable<IEnumerable<int>>> MapEnumerableTestData => new()
+    {
+        {
+            new[] {-5, 0, 3},
+            new[] {
+                new[] { -5 },
+                new[] { 0 },
+                new[] { 3 }
+            }
+        },
+        { Enumerable.Empty<int>(), Enumerable.Empty<IEnumerable<int>>() }
+    };
+
+    [Theory]
+    [MemberData(nameof(MapEnumerableTestData))]
+    public void MapEnumerableOfIntToEnumerableOfEnumerables(IEnumerable<int> ints, IEnumerable<IEnumerable<int>> expected)
+    {
+        var toEnumerable = new Func<int, IEnumerable<int>>(i => new[] { i });
+
+        var actual = ints.Map(toEnumerable);
+
+        Assert.Equivalent(expected, actual);
     }
 }
