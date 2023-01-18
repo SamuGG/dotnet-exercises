@@ -158,4 +158,36 @@ public class SolutionsTests
         var actual = Solutions.GetValidWorkPermit(people, employeeId);
         Assert.Equal(expected, actual);
     }
+
+    public static TheoryData<Employee[], double> AverageYearsTestData => new()
+    {
+        {
+            Array.Empty<Employee>(),
+            0.0
+        },
+        {
+            new Employee[]
+            {
+                new Employee { JoinedOn = DateTime.Today, LeftOn = FP.F.None }
+            },
+            0.0
+        },
+        {
+            new Employee[]
+            {
+                new Employee { JoinedOn = DateTime.Today.AddYears(-2), LeftOn = FP.F.Some(DateTime.Today.AddYears(-1)) },
+                new Employee { JoinedOn = DateTime.Today.AddYears(-2), LeftOn = FP.F.Some(DateTime.Today.AddMonths(-6)) },
+                new Employee { JoinedOn = DateTime.Today, LeftOn = FP.F.None }
+            },
+            1.25
+        }
+    };
+
+    [Theory]
+    [MemberData(nameof(AverageYearsTestData))]
+    public void AverageYearsWorked(Employee[] employees, double expected)
+    {
+        double actual = Solutions.AverageYearsWorkedAtTheCompany(employees.AsReadOnly());
+        Assert.Equal(expected, actual, 2);
+    }
 }
