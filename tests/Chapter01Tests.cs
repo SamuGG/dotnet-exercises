@@ -1,8 +1,8 @@
 using FunctionalProgramming.Exercises.Chapter01;
 
-namespace FunctionalProgramming.Exercises.Tests;
+namespace FunctionalProgramming.Exercises.Tests.Chapter01;
 
-public class Chapter01Tests
+public class SolutionsTests
 {
     [Theory]
     [InlineData(true)]

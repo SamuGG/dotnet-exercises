@@ -1,9 +1,9 @@
 using FunctionalProgramming.Exercises.Chapter02;
-using static FunctionalProgramming.Exercises.Chapter02.Program;
+using static FunctionalProgramming.Exercises.Chapter02.Solution;
 
-namespace FunctionalProgramming.Exercises.Tests;
+namespace FunctionalProgramming.Exercises.Tests.Chapter02;
 
-public class Chapter02Tests
+public class SolutionsTests
 {
     [Theory]
     [InlineData(1.78, 58.3, 18.4)]
@@ -11,7 +11,7 @@ public class Chapter02Tests
     [InlineData(1.66, 82.7, 30.01)]
     public void CalculateBmi(double height, double weight, double expected)
     {
-        double actual = Program.CalculateBMI(height, weight);
+        double actual = Solution.CalculateBMI(height, weight);
         Assert.Equal(expected, actual, 2);
     }
 
@@ -21,7 +21,7 @@ public class Chapter02Tests
     [InlineData(30.01, BmiRange.Overweight)]
     public void BmiToRange(double bmi, BmiRange expected)
     {
-        var actual = Program.ToBmiRange(bmi);
+        var actual = Solution.ToBmiRange(bmi);
         Assert.Equal(expected, actual);
     }
 
@@ -36,7 +36,7 @@ public class Chapter02Tests
         BmiRange output = BmiRange.Healthy;
         var writeOutput = new Action<BmiRange>(x => output = x);
 
-        Program.Run(readHeight, readWeight, writeOutput);
+        Solution.Run(readHeight, readWeight, writeOutput);
 
         Assert.Equal(expected, output);
     }

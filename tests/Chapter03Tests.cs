@@ -2,9 +2,9 @@ using System.Collections.Specialized;
 using FunctionalProgramming.Exercises.Chapter03;
 using LaYumba.Functional;
 
-namespace FunctionalProgramming.Exercises.Tests;
+namespace FunctionalProgramming.Exercises.Tests.Chapter03;
 
-public class Chapter03Tests
+public class SolutionsTests
 {
     public static TheoryData<string, Option<DayOfWeek>> ParseTestData => new()
     {
