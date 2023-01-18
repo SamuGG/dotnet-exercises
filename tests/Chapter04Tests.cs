@@ -84,4 +84,78 @@ public class SolutionsTests
 
         Assert.Equivalent(expected, actual);
     }
+
+    public static TheoryData<Dictionary<string, Employee>, string, FP.Option<WorkPermit>> WorkPermitTestData => new()
+    {
+        {
+            new Dictionary<string, Employee>(),
+            "ID-01",
+            FP.F.None
+        },
+        {
+            new Dictionary<string, Employee>
+            {
+                {"ID-01", new Employee()}
+            },
+            "ID-01",
+            FP.F.None
+        },
+        {
+            new Dictionary<string, Employee>
+            {
+                {"ID-01", new Employee { WorkPermit = FP.F.Some(new WorkPermit())}}
+            },
+            "ID-01",
+            FP.F.Some(new WorkPermit())
+        }
+    };
+
+    [Theory]
+    [MemberData(nameof(WorkPermitTestData))]
+    public void GetWorkPermit(Dictionary<string, Employee> people, string employeeId, FP.Option<WorkPermit> expected)
+    {
+        var actual = Solutions.GetWorkPermit(people, employeeId);
+        Assert.Equal(expected, actual);
+    }
+
+    public static TheoryData<Dictionary<string, Employee>, string, FP.Option<WorkPermit>> ValidWorkPermitTestData => new()
+    {
+        {
+            new Dictionary<string, Employee>(),
+            "ID-01",
+            FP.F.None
+        },
+        {
+            new Dictionary<string, Employee>
+            {
+                {"ID-01", new Employee()}
+            },
+            "ID-01",
+            FP.F.None
+        },
+        {
+            new Dictionary<string, Employee>
+            {
+                {"ID-01", new Employee { WorkPermit = FP.F.Some(new WorkPermit{ Expiry = DateTime.Today.AddDays(-1)})}}
+            },
+            "ID-01",
+            FP.F.None
+        },
+        {
+            new Dictionary<string, Employee>
+            {
+                {"ID-01", new Employee { WorkPermit = FP.F.Some(new WorkPermit{ Expiry = DateTime.Today.AddDays(1)})}}
+            },
+            "ID-01",
+            FP.F.Some(new WorkPermit{ Expiry = DateTime.Today.AddDays(1)})
+        }
+    };
+
+    [Theory]
+    [MemberData(nameof(ValidWorkPermitTestData))]
+    public void GetValidWorkPermit(Dictionary<string, Employee> people, string employeeId, FP.Option<WorkPermit> expected)
+    {
+        var actual = Solutions.GetValidWorkPermit(people, employeeId);
+        Assert.Equal(expected, actual);
+    }
 }
