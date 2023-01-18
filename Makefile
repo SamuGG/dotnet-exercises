@@ -21,6 +21,8 @@ clean: ## Clean the repo
 	@echo "Cleaning the repo"
 	yarn cache clean
 	rm -fr node_modules
+	dotnet clean src
+	dotnet clean tests
 	docker rmi $(shell docker images --format '{{.Repository}}:{{.Tag}}' | grep -e 'ghcr.io/streetsidesoftware/cspell' -e 'peterdavehello/npm-doctoc' -e 'davidanson/markdownlint-cli2') | true
 	@echo "✔ Done"
 
@@ -43,7 +45,7 @@ install-deps: ## Install Node dependencies
 ###
 
 .PHONY: spell-check
-spell-check: check-interactive set-interactive ## Spell-checking
+spell-check: check-interactive set-interactive ## Check spelling
 	@echo "- Spell-checking..."
 	docker run --rm $(DOCKER_INTERACTIVE_FLAGS) \
 		-v $(MOUNT_PATH):/workdir \
@@ -53,11 +55,13 @@ spell-check: check-interactive set-interactive ## Spell-checking
 
 .PHONY: toc-markdown
 toc-markdown: ## Generate markdown table of contents
+	@echo "- Generating TOCs..."
 	docker run --rm $(DOCKER_INTERACTIVE_FLAGS) \
 		-v $(MOUNT_PATH):/workdir \
 		-w /workdir \
 		peterdavehello/npm-doctoc:$(VERSION_DOCTOC) \
 		doctoc --title "## Table of Contents" README.md
+	@echo "✔ Done"
 
 .PHONY: lint-markdown
 lint-markdown: check-interactive set-interactive ## Lint markdown files
@@ -101,3 +105,26 @@ ifeq ($(DOCKER_INTERACTIVE),true)
 else
 	$(eval DOCKER_INTERACTIVE_FLAGS=-t)
 endif
+
+###
+##@ Build
+###
+
+.PHONY: build
+build: build-sources build-tests
+
+.PHONY: build-sources
+build-sources: ## Builds source projects
+	dotnet build src/
+
+.PHONY: build-tests
+build-tests: ## Builds test projects
+	dotnet build tests/
+
+###
+##@ Test
+###
+
+.PHONY: run-tests
+run-tests: ## Runs test projects
+	dotnet test tests/

@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/chapter-02/bin/Debug/net7.0/Solutions.dll",
+            "program": "${workspaceFolder}/src/bin/Debug/net7.0/FunctionalProgramming.Exercises.dll",
             "args": [],
             "cwd": "${workspaceFolder}/tests",
             "console": "integratedTerminal",
