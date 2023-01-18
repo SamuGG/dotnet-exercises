@@ -1,6 +1,6 @@
 ﻿namespace FunctionalProgramming.Exercises.Chapter02;
 
-public sealed class Program
+public static class Solution
 {
     private static void Main(string[] _)
     {
