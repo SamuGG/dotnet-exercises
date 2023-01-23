@@ -23,5 +23,5 @@ node_modules/
 
 src/**/bin
 src/**/obj
-tests/**/bin
-tests/**/obj
+test/**/bin
+test/**/obj
