@@ -29,7 +29,10 @@
     "ghcr.io/devcontainers/features/docker-from-docker:1": {}
   },
   "image": "mcr.microsoft.com/devcontainers/dotnet:7.0",
-  "postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
+  "postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install --lts && sudo chown vscode .yarn",
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-yarn,target=${containerWorkspaceFolder}/.yarn,type=volume"
+  ],
   "remoteEnv": {
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
   }
