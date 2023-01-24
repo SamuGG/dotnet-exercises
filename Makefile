@@ -21,8 +21,7 @@ clean: ## Clean the repo
 	@echo "Cleaning the repo"
 	yarn cache clean
 	rm -fr node_modules
-	dotnet clean src
-	dotnet clean tests
+	dotnet clean
 	docker rmi $(shell docker images --format '{{.Repository}}:{{.Tag}}' | grep -e 'ghcr.io/streetsidesoftware/cspell' -e 'peterdavehello/npm-doctoc' -e 'davidanson/markdownlint-cli2') | true
 	@echo "✔ Done"
 
@@ -111,15 +110,8 @@ endif
 ###
 
 .PHONY: build
-build: build-sources build-tests
-
-.PHONY: build-sources
-build-sources: ## Builds source projects
-	dotnet build src/
-
-.PHONY: build-tests
-build-tests: ## Builds test projects
-	dotnet build tests/
+build: ## Builds all projects
+	dotnet build
 
 ###
 ##@ Test
@@ -127,4 +119,4 @@ build-tests: ## Builds test projects
 
 .PHONY: run-tests
 run-tests: ## Runs test projects
-	dotnet test tests/
+	dotnet test
