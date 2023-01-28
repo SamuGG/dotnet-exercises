@@ -1,7 +1,14 @@
-# Functional Programming in C#
+# Functional Programming in C
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Exercises by chapter](#exercises-by-chapter)
+- [Reference Links](#reference-links)
+- [Repository's Documentation](#repositorys-documentation)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Exercises by chapter
 
@@ -9,6 +16,7 @@
 - [Chapter 02](docs/chapter-02.md)
 - [Chapter 03](docs/chapter-03.md)
 - [Chapter 04](docs/chapter-04.md)
+- [Chapter 06](docs/chapter-06.md)
 
 ## Reference Links
 
