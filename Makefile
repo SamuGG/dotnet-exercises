@@ -59,7 +59,7 @@ toc-markdown: ## Generate markdown table of contents
 		-v $(MOUNT_PATH):/workdir \
 		-w /workdir \
 		peterdavehello/npm-doctoc:$(VERSION_DOCTOC) \
-		doctoc --title "## Table of Contents" README.md
+		doctoc --title "## Table of Contents ##" README.md
 	@echo "✔ Done"
 
 .PHONY: lint-markdown
