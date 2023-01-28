@@ -26,3 +26,25 @@ yarn lint-staged -d > lint-staged-debug.txt 2>&1
 
 - Check that [.gitignore](.gitignore) is not including or excluding external packages by mistake.
 Folders `.yarn/cache` and `node_modules` are excluded in this repo.
+
+## Husky
+
+### Permission denied
+
+If you get an error similar to the following:
+
+```sh
+fatal: cannot exec '.husky/pre-commit': Permission denied
+```
+
+The solution is to re-install husky:
+
+```sh
+yarn remove husky
+rm -rf .husky
+yarn add husky --dev
+yarn husky add .husky/pre-commit "yarn lint-staged --concurrent false"
+yarn husky add .husky/commit-msg "yarn commitlint --edit \$1"
+```
+
+> This has been observed after running `git rebase`
