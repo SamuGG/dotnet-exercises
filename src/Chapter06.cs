@@ -78,4 +78,21 @@ public static class Solutions
             return ex;
         }
     }
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    [SuppressMessage("Design", "CA1031: Do not catch general exception types")]
+    public static Either<L, R> Try2<L, R>(Func<R> f, Func<Exception, L> left)
+    {
+        ArgumentNullException.ThrowIfNull(f);
+        ArgumentNullException.ThrowIfNull(left);
+
+        try
+        {
+            return F.Right(f());
+        }
+        catch (Exception ex)
+        {
+            return F.Left(left(ex));
+        }
+    }
 }
