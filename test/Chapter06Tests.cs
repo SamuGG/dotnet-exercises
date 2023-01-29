@@ -72,4 +72,30 @@ public class SolutionsTests
             ex => Assert.Equal(expected, ex),
             r => Assert.Fail("Exceptional with error state expected but got success state instead"));
     }
+
+    [Fact]
+    public void Try2SuccessfulFunction()
+    {
+        const int value = 6;
+        var f = new Func<int>(() => value);
+
+        var actual = Solutions.Try2(f, _ => F.Left(string.Empty));
+
+        actual.Match(
+            l => Assert.Fail("Either with right state expected but got left state instead"),
+            r => Assert.Equal(value, r));
+    }
+
+    [Fact]
+    public void Try2FailureFunction()
+    {
+        var expected = F.Left("Some error description");
+        var f = new Func<int>(() => throw new NotImplementedException());
+
+        var actual = Solutions.Try2(f, _ => expected);
+
+        actual.Match(
+            l => Assert.Equal(expected, l),
+            r => Assert.Fail("Either with left state expected but got right state instead"));
+    }
 }
