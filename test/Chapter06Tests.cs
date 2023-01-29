@@ -32,4 +32,18 @@ public class SolutionsTests
         var actual = sut.ToEither(left);
         Assert.Equal(expected, actual);
     }
+
+    public static TheoryData<string, Option<Solutions.Age>> ParseEitherTestData => new()
+    {
+        { "-23", F.None },
+        { "23", Solutions.Age.Of(23) }
+    };
+
+    [Theory]
+    [MemberData(nameof(ParseEitherTestData))]
+    public void ParseEither(string candidate, Option<Solutions.Age> expected)
+    {
+        var actual = Solutions.ParseAge(candidate);
+        Assert.Equal(expected, actual);
+    }
 }
