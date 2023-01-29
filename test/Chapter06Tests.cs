@@ -46,4 +46,30 @@ public class SolutionsTests
         var actual = Solutions.ParseAge(candidate);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void TrySuccessfulFunction()
+    {
+        const int value = 304;
+        var f = new Func<int>(() => value);
+
+        var actual = Solutions.Try(f);
+
+        actual.Match(
+            ex => Assert.Fail("Exception with success state expected but got error state instead"),
+            r => Assert.Equal(value, r));
+    }
+
+    [Fact]
+    public void TryFailureFunction()
+    {
+        var expected = new NotImplementedException();
+        var f = new Func<int>(() => throw expected);
+
+        var actual = Solutions.Try(f);
+
+        actual.Match(
+            ex => Assert.Equal(expected, ex),
+            r => Assert.Fail("Exceptional with error state expected but got success state instead"));
+    }
 }
