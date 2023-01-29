@@ -20,4 +20,48 @@ public static class Solutions
             () => left(),
             r => r);
     }
+
+    [SuppressMessage("Design", "CA1034: Nested types should not be visible")]
+    public sealed class Age : IEquatable<Age>
+    {
+        private readonly int _value;
+
+        private Age(int value)
+        {
+            _value = value;
+        }
+
+        public static Option<Age> Of(int value) =>
+            value >= 0 ? new Age(value) : F.None;
+
+        public bool Equals(Age? other)
+        {
+            return other is not null
+                && _value == other._value;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return Equals(obj as Age);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_value);
+        }
+    }
+
+    [SuppressMessage("CodeQuality", "IDE0052: Remove unread private member")]
+    [SuppressMessage("Performance", "CA1823: Avoid unused private fields")]
+    public static readonly Func<string, Option<Age>> ParseAge = s
+        => ParseInt(s).Bind(Age.Of);
+
+    internal static Either<string, int> ParseInt(this string s)
+       => Int.Parse(s).ToEither(() => $"'{s}' is not a valid representation of an int");
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static Option<RR> Bind<L, R, RR>(this Either<L, R> either, Func<R, Option<RR>> f)
+        => either.Match(
+            _ => F.None,
+            r => f(r));
 }
