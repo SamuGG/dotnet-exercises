@@ -64,4 +64,18 @@ public static class Solutions
         => either.Match(
             _ => F.None,
             r => f(r));
+
+    [SuppressMessage("Design", "CA1031: Do not catch general exception types")]
+    public static Exceptional<T> Try<T>(Func<T> f)
+    {
+        ArgumentNullException.ThrowIfNull(f);
+        try
+        {
+            return f();
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
+    }
 }
