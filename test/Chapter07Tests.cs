@@ -53,4 +53,13 @@ public class SolutionsTests
 
         Assert.Equal("left:middle:right", actual);
     }
+
+    [Theory]
+    [InlineData(Solutions.NumberType.Home, "0102 123 4567")]
+    public void CreateUkPhoneNumber(Solutions.NumberType numberType, string number)
+    {
+        var actual = Solutions.UkNumberFactory(numberType, number);
+
+        Assert.Equal("UK", actual.Code);
+    }
 }
