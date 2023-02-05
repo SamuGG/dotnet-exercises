@@ -1,9 +1,17 @@
 using FunctionalProgramming.Exercises.Chapter07;
+using Xunit.Abstractions;
 
 namespace FunctionalProgramming.Exercises.Tests.Chapter07;
 
 public class SolutionsTests
 {
+    private readonly ITestOutputHelper _testOutput;
+
+    public SolutionsTests(ITestOutputHelper testOutput)
+    {
+        _testOutput = testOutput;
+    }
+
     [Theory]
     [InlineData(1, 1, 0)]
     [InlineData(10, 3, 1)]
@@ -71,5 +79,65 @@ public class SolutionsTests
 
         Assert.Equal("UK", actual.Code);
         Assert.Equal(Solutions.NumberType.Mobile, actual.Type);
+    }
+
+    [Fact]
+    public void InfoLogsAreConsumed()
+    {
+        string actual = string.Empty;
+
+        void testLogger(Solutions.LogLevel level, string message)
+        {
+            string output = $"[{level}] - {message}";
+            _testOutput.WriteLine(output);
+            actual = output;
+        }
+
+        var consumeLog = (Solutions.Log log) =>
+            log.Info("Test message");
+
+        consumeLog(testLogger);
+
+        Assert.Equal("[Info] - Test message", actual);
+    }
+
+    [Fact]
+    public void DebugLogsAreConsumed()
+    {
+        string actual = string.Empty;
+
+        void testLogger(Solutions.LogLevel level, string message)
+        {
+            string output = $"[{level}] - {message}";
+            _testOutput.WriteLine(output);
+            actual = output;
+        }
+
+        var consumeLog = (Solutions.Log log) =>
+            log.Debug("Test message");
+
+        consumeLog(testLogger);
+
+        Assert.Equal("[Debug] - Test message", actual);
+    }
+
+    [Fact]
+    public void ErrorLogsAreConsumed()
+    {
+        string actual = string.Empty;
+
+        void testLogger(Solutions.LogLevel level, string message)
+        {
+            string output = $"[{level}] - {message}";
+            _testOutput.WriteLine(output);
+            actual = output;
+        }
+
+        var consumeLog = (Solutions.Log log) =>
+            log.Error("Test message");
+
+        consumeLog(testLogger);
+
+        Assert.Equal("[Error] - Test message", actual);
     }
 }
