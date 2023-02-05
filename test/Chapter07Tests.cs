@@ -140,4 +140,16 @@ public class SolutionsTests
 
         Assert.Equal("[Error] - Test message", actual);
     }
+
+    [Fact]
+    public void MapInTermsOfAggregate()
+    {
+        var range = Enumerable.Range(1, 5);
+        var transform = (int i) => i.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+        var actual = range.MapInTermsOfAggregate(transform);
+
+        var expected = new string[] { "1", "2", "3", "4", "5" };
+        Assert.Equivalent(expected, actual);
+    }
 }
