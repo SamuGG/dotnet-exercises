@@ -13,4 +13,17 @@ public class SolutionsTests
         int actual = Solutions.Remainder(a, b);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void ApplyRightmostParameter()
+    {
+        var binaryFunc = new Func<string, string, string>((a, b) =>
+            string.Join(':', a, b));
+
+        var unaryFunc = binaryFunc.ApplyR("right");
+
+        string actual = unaryFunc("left");
+
+        Assert.Equal("left:right", actual);
+    }
 }
