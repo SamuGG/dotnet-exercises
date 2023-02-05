@@ -164,4 +164,23 @@ public class SolutionsTests
         var expected = new int[] { 2, 4, 6 };
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void BindInTermsOfAggregate()
+    {
+        var range = Enumerable.Range(1, 5);
+        var binding = (int i) => new[] { -i, i };
+
+        var actual = range.BindInTermsOfAggregate(binding);
+
+        var expected = new[]
+        {
+            new [] { -1, 1 },
+            new [] { -2, 2 },
+            new [] { -3, 3 },
+            new [] { -4, 4 },
+            new [] { -5, 5 }
+        };
+        Assert.Equivalent(expected, actual);
+    }
 }
