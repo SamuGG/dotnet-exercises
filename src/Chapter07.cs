@@ -33,11 +33,7 @@ public static class Solutions
         }
     }
 
-    public enum NumberType
-    {
-        Home,
-        Mobile
-    }
+    public enum NumberType { Home, Mobile }
 
     [SuppressMessage("Design", "CA1034: Nested types should not be visible")]
     [SuppressMessage("Usage", "CA2225: Operator overloads have named alternates")]
@@ -62,4 +58,30 @@ public static class Solutions
 
     public static Func<string, PhoneNumber> MobileUkNumberFactory =>
         UkNumberFactory.Apply(NumberType.Mobile);
+
+
+    public enum LogLevel { Debug, Info, Error }
+
+    public delegate void Log(LogLevel level, string message);
+
+    public static void Debug(this Log log, string message)
+    {
+        ArgumentNullException.ThrowIfNull(log);
+        log(LogLevel.Debug, message);
+    }
+
+    public static void Info(this Log log, string message)
+    {
+        ArgumentNullException.ThrowIfNull(log);
+        log(LogLevel.Info, message);
+    }
+
+    public static void Error(this Log log, string message)
+    {
+        ArgumentNullException.ThrowIfNull(log);
+        log(LogLevel.Error, message);
+    }
+
+    public static void ConsumeLog(Log log) =>
+        log.Info("Info message to log");
 }
