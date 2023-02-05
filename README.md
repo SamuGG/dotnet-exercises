@@ -17,6 +17,7 @@
 - [Chapter 03](docs/chapter-03.md)
 - [Chapter 04](docs/chapter-04.md)
 - [Chapter 06](docs/chapter-06.md)
+- [Chapter 07](docs/chapter-07.md)
 
 ## Reference Links ##
 
