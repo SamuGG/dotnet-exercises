@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using LaYumba.Functional;
 
 namespace FunctionalProgramming.Exercises.Chapter07;
 
@@ -53,6 +54,9 @@ public static class Solutions
     }
 
     // Factory: (NumberType, CountryCode, string) -> PhoneNumber
-    public static Func<NumberType, CountryCode, string, PhoneNumber> PhoneNumberFactory =>
-        (type, code, number) => new(type, code, number);
+    public static Func<CountryCode, NumberType, string, PhoneNumber> PhoneNumberFactory =>
+        (code, type, number) => new(type, code, number);
+
+    public static Func<NumberType, string, PhoneNumber> UkNumberFactory =>
+        PhoneNumberFactory.Apply((CountryCode)"UK");
 }
