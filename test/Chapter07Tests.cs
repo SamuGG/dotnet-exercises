@@ -26,4 +26,18 @@ public class SolutionsTests
 
         Assert.Equal("left:right", actual);
     }
+
+    [Theory]
+    [InlineData(-7, -2)]
+    [InlineData(10, 0)]
+    [InlineData(3, 3)]
+    public void DivideIntegerByFive(int divisor, int expectedRemainder)
+    {
+        var divideByFive = Solutions.Remainder
+            .ApplyR(5);
+
+        int actualRemainder = divideByFive(divisor);
+
+        Assert.Equal(expectedRemainder, actualRemainder);
+    }
 }
