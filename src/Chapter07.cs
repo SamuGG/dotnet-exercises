@@ -59,4 +59,7 @@ public static class Solutions
 
     public static Func<NumberType, string, PhoneNumber> UkNumberFactory =>
         PhoneNumberFactory.Apply((CountryCode)"UK");
+
+    public static Func<string, PhoneNumber> MobileUkNumberFactory =>
+        UkNumberFactory.Apply(NumberType.Mobile);
 }
