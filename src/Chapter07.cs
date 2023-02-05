@@ -92,4 +92,11 @@ public static class Solutions
             l.Add(f(t));
             return l;
         });
+
+    public static IEnumerable<T> WhereInTermsOfAggregate<T>(this IEnumerable<T> collection, Func<T, bool> f) =>
+        collection.Aggregate(new List<T>(), (l, t) =>
+        {
+            if (f(t)) l.Add(t);
+            return l;
+        });
 }
