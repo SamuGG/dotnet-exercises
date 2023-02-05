@@ -84,4 +84,12 @@ public static class Solutions
 
     public static void ConsumeLog(Log log) =>
         log.Info("Info message to log");
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static IEnumerable<R> MapInTermsOfAggregate<T, R>(this IEnumerable<T> collection, Func<T, R> f) =>
+        collection.Aggregate(new List<R>(), (l, t) =>
+        {
+            l.Add(f(t));
+            return l;
+        });
 }
