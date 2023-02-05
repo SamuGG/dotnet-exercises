@@ -15,7 +15,7 @@ public class SolutionsTests
     }
 
     [Fact]
-    public void ApplyRightmostParameter()
+    public void ApplyRightmostParameterToBinaryFunction()
     {
         var binaryFunc = new Func<string, string, string>((a, b) =>
             string.Join(':', a, b));
@@ -39,5 +39,18 @@ public class SolutionsTests
         int actualRemainder = divideByFive(divisor);
 
         Assert.Equal(expectedRemainder, actualRemainder);
+    }
+
+    [Fact]
+    public void ApplyRightmostParameterToTernaryFunction()
+    {
+        var binaryFunc = new Func<string, string, string, string>((a, b, c) =>
+            string.Join(':', a, b, c));
+
+        var unaryFunc = binaryFunc.ApplyR("right");
+
+        string actual = unaryFunc("left", "middle");
+
+        Assert.Equal("left:middle:right", actual);
     }
 }
