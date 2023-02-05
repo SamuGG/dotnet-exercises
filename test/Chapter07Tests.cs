@@ -152,4 +152,16 @@ public class SolutionsTests
         var expected = new string[] { "1", "2", "3", "4", "5" };
         Assert.Equivalent(expected, actual);
     }
+
+    [Fact]
+    public void WhereInTermsOfAggregate()
+    {
+        var range = Enumerable.Range(1, 6);
+        var predicate = (int i) => i % 2 == 0;
+
+        var actual = range.WhereInTermsOfAggregate(predicate);
+
+        var expected = new int[] { 2, 4, 6 };
+        Assert.Equal(expected, actual);
+    }
 }
