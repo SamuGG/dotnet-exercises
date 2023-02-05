@@ -99,4 +99,12 @@ public static class Solutions
             if (f(t)) l.Add(t);
             return l;
         });
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static IEnumerable<IEnumerable<R>> BindInTermsOfAggregate<T, R>(this IEnumerable<T> collection, Func<T, IEnumerable<R>> f) =>
+        collection.Aggregate(new List<IEnumerable<R>>(), (l, t) =>
+        {
+            l.Add(f(t));
+            return l;
+        });
 }
