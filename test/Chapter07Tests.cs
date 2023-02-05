@@ -62,4 +62,14 @@ public class SolutionsTests
 
         Assert.Equal("UK", actual.Code);
     }
+
+    [Theory]
+    [InlineData("0720 876 5432")]
+    public void CreateUkMobilePhoneNumber(string number)
+    {
+        var actual = Solutions.MobileUkNumberFactory(number);
+
+        Assert.Equal("UK", actual.Code);
+        Assert.Equal(Solutions.NumberType.Mobile, actual.Type);
+    }
 }
