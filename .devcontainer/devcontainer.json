@@ -7,9 +7,13 @@
     "vscode": {
       "extensions": [
         "donjayamanne.githistory",
+        "kreativ-software.csharpextensions",
         "ms-dotnettools.csharp"
       ],
       "settings": {
+        "csharpextensions.privateMemberPrefix": "_",
+        "csharpextensions.useFileScopedNamespace": true,
+        "csharpextensions.useThisForCtorAssignments": false,
         "editor.formatOnSave": true,
         "files.exclude": {
           "**/bin": true,

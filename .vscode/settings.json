@@ -1,5 +1,8 @@
 {
     "dotnet-test-explorer.addProblems": false,
     "dotnet-test-explorer.enableTelemetry": false,
-    "dotnet-test-explorer.testProjectPath": "tests"
+    "dotnet-test-explorer.testProjectPath": "tests",
+    "csharpextensions.privateMemberPrefix": "_",
+    "csharpextensions.useFileScopedNamespace": true,
+    "csharpextensions.useThisForCtorAssignments": false
 }
