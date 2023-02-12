@@ -24,4 +24,12 @@ public static class Solutions
     [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
     public static Either<L, R> Select<L, T, R>(this Either<L, T> either, Func<T, R> f)
        => either.Map(f);
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static Either<L, RR> SelectMany<L, T, R, RR>(this Either<L, T> either, Func<T, Either<L, R>> bind, Func<T, R, RR> project)
+        => either.Match(
+            leftF => F.Left(leftF),
+            rightF => bind(rightF).Match<Either<L, RR>>(
+                leftT => F.Left(leftT),
+                rightT => F.Right(project(rightF, rightT))));
 }
