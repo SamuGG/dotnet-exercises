@@ -36,4 +36,12 @@ public static class Solutions
     [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
     public static Exceptional<R> Select<T, R>(this Exceptional<T> exceptional, Func<T, R> f)
        => exceptional.Map(f);
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static Exceptional<RR> SelectMany<T, R, RR>(this Exceptional<T> exceptional, Func<T, Exceptional<R>> bind, Func<T, R, RR> project)
+        => exceptional.Match(
+            exceptionT => exceptionT,
+            rightF => bind(rightF).Match<Exceptional<RR>>(
+                exceptionF => exceptionF,
+                rightT => project(rightF, rightT)));
 }
