@@ -32,4 +32,8 @@ public static class Solutions
             rightF => bind(rightF).Match<Either<L, RR>>(
                 leftT => F.Left(leftT),
                 rightT => F.Right(project(rightF, rightT))));
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static Exceptional<R> Select<T, R>(this Exceptional<T> exceptional, Func<T, R> f)
+       => exceptional.Map(f);
 }
