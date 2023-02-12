@@ -147,7 +147,6 @@ public class SolutionsTests
             r => Assert.Equal(64, r));
     }
 
-
     [Fact]
     public void QuerySyntaxWorksWithExceptions()
     {
@@ -174,5 +173,37 @@ public class SolutionsTests
         actual.Match(
             ex => Assert.Fail("Expected some value but found an exception instead"),
             value => Assert.Equal(30, value));
+    }
+
+    [Fact]
+    public void QuerySyntaxWorksOnManyExceptionals()
+    {
+        LaYumba.Functional.Exceptional<int> failed = new NotImplementedException();
+        LaYumba.Functional.Exceptional<int> successful = 11;
+
+        var actual =
+            from a in failed
+            from b in successful
+            select a - b;
+
+        actual.Match(
+            ex => Assert.IsType<NotImplementedException>(ex),
+            value => Assert.Fail("Expected some exception but found some value instead"));
+    }
+
+    [Fact]
+    public void QuerySyntaxWorksOnManySuccessExceptionals()
+    {
+        LaYumba.Functional.Exceptional<int> num1 = 32;
+        LaYumba.Functional.Exceptional<int> num2 = 32;
+
+        var actual =
+            from a in num1
+            from b in num2
+            select a + b;
+
+        actual.Match(
+            ex => Assert.Fail("Expected some value but found some exception instead"),
+            value => Assert.Equal(64, value));
     }
 }
