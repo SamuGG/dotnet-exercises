@@ -113,4 +113,37 @@ public class SolutionsTests
             l => Assert.Fail("Expected Either with right state but found left state instead"),
             r => Assert.Equal(18, r));
     }
+
+    [Fact]
+    public void QuerySyntaxWorksOnManyLeftEithers()
+    {
+        const string leftState = "Invalid state";
+        LaYumba.Functional.Either<string, int> eitherLeft = F.Left(leftState);
+        LaYumba.Functional.Either<string, int> eitherRight = F.Right(64);
+
+        var actual =
+            from l in eitherLeft
+            from r in eitherRight
+            select l - r;
+
+        actual.Match(
+            l => Assert.Equal(leftState, l),
+            r => Assert.Fail("Expected some Either with left state"));
+    }
+
+    [Fact]
+    public void QuerySyntaxWorksOnManyRightEithers()
+    {
+        LaYumba.Functional.Either<string, int> num1 = F.Right(13);
+        LaYumba.Functional.Either<string, int> num2 = F.Right(51);
+
+        var actual =
+            from a in num1
+            from b in num2
+            select a + b;
+
+        actual.Match(
+            l => Assert.Fail("Expected all Eithers with right state"),
+            r => Assert.Equal(64, r));
+    }
 }
