@@ -12,4 +12,12 @@ public static class Solutions
             rightF => t.Match<Either<L, R>>(
                 leftT => F.Left(leftT),
                 rightT => F.Right(rightF(rightT))));
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static Exceptional<R> Apply<T, R>(this Exceptional<Func<T, R>> f, Exceptional<T> t)
+        => f.Match(
+            exceptionF => exceptionF,
+            successF => t.Match<Exceptional<R>>(
+                exceptionT => exceptionT,
+                successT => successF(successT)));
 }
