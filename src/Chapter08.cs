@@ -20,4 +20,8 @@ public static class Solutions
             successF => t.Match<Exceptional<R>>(
                 exceptionT => exceptionT,
                 successT => successF(successT)));
+
+    [SuppressMessage("Naming", "CA1715: Identifiers should have correct prefix")]
+    public static Either<L, R> Select<L, T, R>(this Either<L, T> either, Func<T, R> f)
+       => either.Map(f);
 }
