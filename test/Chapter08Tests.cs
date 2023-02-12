@@ -1,5 +1,6 @@
 using FunctionalProgramming.Exercises.Chapter08;
 using F = LaYumba.Functional.F;
+using Unit = System.ValueTuple;
 
 namespace FunctionalProgramming.Exercises.Tests.Chapter08;
 
@@ -206,4 +207,25 @@ public class SolutionsTests
             ex => Assert.Fail("Expected some value but found some exception instead"),
             value => Assert.Equal(64, value));
     }
+
+    [Fact]
+    public void PrepareFavouriteDishWithLinq()
+    {
+        LaYumba.Functional.Either<string, Unit> WakeUpEarly() => F.Right(Unit.Create());
+        LaYumba.Functional.Either<string, Ingredients> ShopForIngredients() => F.Right(new Ingredients());
+        LaYumba.Functional.Either<string, Food> CookRecipe(Ingredients ingredients) => F.Right(new Food());
+
+        LaYumba.Functional.Either<string, Food> cookFood =
+            from _ in WakeUpEarly()
+            from ingredients in ShopForIngredients()
+            from dish in CookRecipe(ingredients)
+            select dish;
+
+        cookFood.Match(
+            reason => Assert.Fail(reason),
+            _ => Assert.True(true));
+    }
+
+    private struct Food { }
+    private struct Ingredients { }
 }
