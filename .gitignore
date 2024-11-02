@@ -20,7 +20,6 @@ node_modules/
 !.vscode/extensions.json
 *.code-workspace
 .history/
-
 bin
 obj
 src/**/bin

@@ -1,5 +1,0 @@
-{
-  "template": "templates/changelog/conventional.hbs",
-  "unreleased": true,
-  "commitLimit": false
-}

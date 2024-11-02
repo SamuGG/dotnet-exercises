@@ -21,7 +21,7 @@ clean: ## Clean the repo
 	@echo "Cleaning the repo"
 	yarn cache clean
 	rm -fr node_modules
-	dotnet clean
+	dotnet clean functional-programming/csharp/src/FunctionalProgramming.Exercises.csproj
 	docker rmi $(shell docker images --format '{{.Repository}}:{{.Tag}}' | grep -e 'ghcr.io/streetsidesoftware/cspell' -e 'peterdavehello/npm-doctoc' -e 'davidanson/markdownlint-cli2') | true
 	@echo "✔ Done"
 
@@ -72,21 +72,9 @@ lint-markdown: check-interactive set-interactive ## Lint markdown files
 	@echo "✔ Done"
 
 ###
-##@ Release Management
-###
-
-.PHONY: create-release
-create-release: generate-changelog ## Generate changelog and create release
-	yarn semantic-release
-
-.PHONY: generate-changelog
-generate-changelog: ## Generate changelog
-	yarn run version
-
-###
 # Docker flags configuration
-# This allows us to see the results from container executables (like cspell) 
-# when we run it manually, and switch the interactive mode off when running 
+# This allows us to see the results from container executables (like cspell)
+# when we run it manually, and switch the interactive mode off when running
 # them from husky.
 ###
 
@@ -104,19 +92,3 @@ ifeq ($(DOCKER_INTERACTIVE),true)
 else
 	$(eval DOCKER_INTERACTIVE_FLAGS=-t)
 endif
-
-###
-##@ Build
-###
-
-.PHONY: build
-build: ## Builds all projects
-	dotnet build
-
-###
-##@ Test
-###
-
-.PHONY: run-tests
-run-tests: ## Runs test projects
-	dotnet test

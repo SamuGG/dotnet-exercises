@@ -1,16 +1,5 @@
 {
 	"recommendations": [
-		"visualstudioexptteam.vscodeintellicode",
 		"formulahendry.dotnet-test-explorer"
-	],
-	"unwantedRecommendations": [
-		"christian-kohler.npm-intellisense",
-		"eamodio.gitlens",
-		"felipecaputo.git-project-manager",
-		"firefox-devtools.vscode-firefox-debug",
-		"googlecloudtools.cloudcode",
-		"ms-edgedevtools.vscode-edge-devtools",
-		"ms-kubernetes-tools.vscode-kubernetes-tools",
-		"vscodevim.vim"
 	]
 }

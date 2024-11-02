@@ -10,13 +10,9 @@
     "linq",
     "linted",
     "linters",
-    "lintstagedrc",
-    "markdownlintignore",
-    "releaserc",
     "samu",
     "struct",
     "structs",
-    "versionrc",
     "yumba"
   ],
   "flagWords": [
@@ -24,8 +20,8 @@
   ],
   "ignorePaths": [
     "node_modules",
-    "bin",
-    "obj",
+    "**/bin",
+    "**/obj",
     "*.lock",
     "/.*rc",
     "/cspell.json",
