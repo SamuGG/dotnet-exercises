@@ -1,0 +1,23 @@
+@page
+@model CorsDemoModel
+@{
+    ViewData["Title"] = "CORS Demo";
+}
+<h1>@ViewData["Title"]</h1>
+
+<button onclick="fetchData()">Fetch Data from API</button>
+<div id="result"></div>
+
+<script>
+    function fetchData() {
+        fetch('http://localhost:5132/weatherforecast')
+            .then(response => response.json())
+            .then(data => {
+                const resultElement = document.getElementById('result');
+                resultElement.innerHTML = JSON.stringify(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
