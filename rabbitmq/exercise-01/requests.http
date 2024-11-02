@@ -1,0 +1,7 @@
+POST http://localhost:5094/greeting-requests
+Content-Type: application/json
+
+{
+    "greeting": "Good afternoon",
+    "name": "William"
+}
