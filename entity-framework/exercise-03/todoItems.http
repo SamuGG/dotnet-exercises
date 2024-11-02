@@ -1,0 +1,45 @@
+GET http://localhost:5220/todoitems
+
+###
+
+POST http://localhost:5220/todoitems
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "Build a REST Api",
+    "isComplete": false
+}
+
+###
+
+POST http://localhost:5220/todoitems
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "Test Todo items group",
+    "isComplete": true
+}
+
+###
+
+GET http://localhost:5220/todoitems/1
+
+###
+
+GET http://localhost:5220/todoitems/complete
+
+###
+
+PUT http://localhost:5220/todoitems/1
+Content-Type: application/json
+
+{
+    "name": "Build a Todo Api",
+    "isComplete": true
+}
+
+###
+
+DELETE http://localhost:5220/todoitems/2
