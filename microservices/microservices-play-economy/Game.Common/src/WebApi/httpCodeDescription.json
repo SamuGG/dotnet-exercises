@@ -1,0 +1,8 @@
+{
+    "HttpCodeDescription": {
+        "ServiceUrl": "https://tools.ietf.org/html/rfc7231",
+        "Http400BadRequest": "6.5.4",
+        "Http404NotFound": "6.5.1",
+        "Http500InternalServerError": "6.6.1"
+    }
+}
