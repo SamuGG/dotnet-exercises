@@ -17,7 +17,7 @@ internal class DeleteCatalogItemCommandHandler : IRequestHandler<DeleteCatalogIt
         ArgumentNullException.ThrowIfNull(dbContext);
         _dbContext = dbContext;
     }
-
+    
     public async Task<Unit> Handle(DeleteCatalogItemCommand request, CancellationToken cancellationToken)
     {
         var catalogItem = await _dbContext.CatalogItems.FindOneAsync(request.Id);

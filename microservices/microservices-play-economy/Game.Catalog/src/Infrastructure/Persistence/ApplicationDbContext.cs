@@ -14,16 +14,16 @@ public class ApplicationDbContext : IApplicationDbContext
     public ITrackedRepository<CatalogItem> CatalogItems { get; init; }
 
     public ApplicationDbContext(
-        [NotNull] IMediator mediator,
+        [NotNull] IMediator mediator, 
         [NotNull] ITrackedRepository<CatalogItem> catalogItemsRepository)
     {
         ArgumentNullException.ThrowIfNull(mediator);
         ArgumentNullException.ThrowIfNull(catalogItemsRepository);
-
+        
         _mediator = mediator;
         CatalogItems = catalogItemsRepository;
     }
 
-    public Task SaveChangesAsync() =>
-        _mediator.DispatchAndClearDomainEventsAsync(CatalogItems);
+    public async Task SaveChangesAsync() => 
+        await _mediator.DispatchAndClearDomainEvents(CatalogItems);
 }

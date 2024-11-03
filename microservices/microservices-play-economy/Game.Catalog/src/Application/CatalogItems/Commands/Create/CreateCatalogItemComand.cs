@@ -21,7 +21,7 @@ internal class CreateCatalogItemCommandHandler : IRequestHandler<CreateCatalogIt
         _dbContext = dbContext;
         _mapper = mapper;
     }
-
+    
     public async Task<Guid> Handle(CreateCatalogItemCommand request, CancellationToken cancellationToken)
     {
         var catalogItem = _mapper.Map<CatalogItem>(request);

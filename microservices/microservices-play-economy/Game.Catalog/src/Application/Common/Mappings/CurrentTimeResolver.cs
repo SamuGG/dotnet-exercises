@@ -14,9 +14,9 @@ internal class CurrentTimeResolver : IValueResolver<object, object, DateTimeOffs
     }
 
     public DateTimeOffset Resolve(
-        object source,
-        object destination,
-        DateTimeOffset destMember,
-        ResolutionContext context) =>
+        object source, 
+        object destination, 
+        DateTimeOffset destMember, 
+        ResolutionContext context) => 
             _dateTimeService.UtcNow;
 }

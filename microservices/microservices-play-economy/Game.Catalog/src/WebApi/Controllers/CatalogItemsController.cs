@@ -39,10 +39,10 @@ public class CatalogItemsController : ControllerBase
     /// A catalog item
     /// </returns>
     /// <remarks>
-    /// <para>Sample request:</para>
-    /// <para>
-    ///    GET /items/7fffed1c-f09c-4e53-a102-55cb501c0102
-    /// </para>
+    /// Sample request:
+    ///
+    ///     GET /items/7fffed1c-f09c-4e53-a102-55cb501c0102
+    ///
     /// </remarks>
     /// <response code="200">The item was retrieved successfully</response>
     /// <response code="404">The item couldn't be found</response>
@@ -62,15 +62,15 @@ public class CatalogItemsController : ControllerBase
     /// The id of the newly created item
     /// </returns>
     /// <remarks>
-    /// <para>Sample request:</para>
-    /// <para>
+    /// Sample request:
+    ///
     ///     POST /items
     ///     {
     ///        "name": "Potion",
     ///        "description": "Restores a small amount of HP",
     ///        "price": 5
     ///     }
-    /// </para>
+    ///
     /// </remarks>
     /// <response code="201">The item was created successfully</response>
     /// <response code="400">The request parameter is invalid</response>
@@ -90,8 +90,8 @@ public class CatalogItemsController : ControllerBase
     /// Nothing
     /// </returns>
     /// <remarks>
-    /// <para>Sample request:</para>
-    /// <para>
+    /// Sample request:
+    ///
     ///     PUT /items
     ///     {
     ///        "id": "7fffed1c-f09c-4e53-a102-55cb501c0102",
@@ -99,7 +99,7 @@ public class CatalogItemsController : ControllerBase
     ///        "description": "Restores some amount of HP",
     ///        "price": 7
     ///     }
-    /// </para>
+    ///
     /// </remarks>
     /// <response code="204">The item was updated successfully</response>
     /// <response code="400">The request parameter is invalid</response>
@@ -121,10 +121,10 @@ public class CatalogItemsController : ControllerBase
     /// Nothing
     /// </returns>
     /// <remarks>
-    /// <para>Sample request:</para>
-    /// <para>
+    /// Sample request:
+    ///
     ///     DELETE /items/7fffed1c-f09c-4e53-a102-55cb501c0102
-    /// </para>
+    ///
     /// </remarks>
     /// <response code="204">The item was deleted successfully</response>
     /// <response code="404">The item couldn't be found</response>

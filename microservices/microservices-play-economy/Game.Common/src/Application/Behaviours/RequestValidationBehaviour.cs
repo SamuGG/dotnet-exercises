@@ -25,11 +25,11 @@ public class RequestValidationBehaviour<TRequest, TResponse> : IPipelineBehavior
                     v.ValidateAsync(context, cancellationToken)));
 
             var failures = validationResults
-                .Where(r => r.Errors.Count > 0)
+                .Where(r => r.Errors.Any())
                 .SelectMany(r => r.Errors)
                 .ToList();
 
-            if (failures.Count > 0)
+            if (failures.Any())
                 throw new Exceptions.ValidationException(failures);
         }
         return await next();

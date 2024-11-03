@@ -7,12 +7,11 @@ namespace Game.Common.Infrastructure.Common;
 
 public static class MediatorExtensions
 {
-    public static async Task DispatchAndClearDomainEventsAsync<T>(this IMediator mediator, [NotNull] ITrackedRepository<T> repository)
+    public static async Task DispatchAndClearDomainEvents<T>(this IMediator mediator, [NotNull] ITrackedRepository<T> repository)
         where T : BaseEntity
     {
-        ArgumentNullException.ThrowIfNull(mediator);
         ArgumentNullException.ThrowIfNull(repository);
-
+        
         foreach (var trackedEntity in repository.GetTrackedEntitiesArray())
         {
             if (trackedEntity.DoesNotHaveDomainEvents)

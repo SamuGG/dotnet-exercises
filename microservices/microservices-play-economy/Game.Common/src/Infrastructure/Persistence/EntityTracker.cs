@@ -14,7 +14,7 @@ public class EntityTracker<T> : IEntityTracker<T> where T : BaseEntity
         _trackedEntities.Add(entity);
     }
 
-    public T[] GetEntitiesArray() =>
+    public T[] GetEntitiesArray() => 
         _trackedEntities.ToArray();
 
     public void RemoveAllWithoutDomainEvents() =>

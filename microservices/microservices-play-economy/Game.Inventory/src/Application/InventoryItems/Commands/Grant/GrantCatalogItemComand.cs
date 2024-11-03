@@ -29,15 +29,15 @@ internal class GrantCatalogItemCommandHandler : IRequestHandler<GrantCatalogItem
             && inventoryItem.CatalogItemId == request.CatalogItemId);
 
         if (inventoryItem is null)
-            await GrantNewCatalogItemAsync(request);
+            await GrantNewCatalogItem(request);
         else
-            await UpdateUserInventoryAsync(inventoryItem, request);
+            await UpdateUserInventory(inventoryItem, request);
 
         await _dbContext.SaveChangesAsync();
         return Unit.Value;
     }
 
-    private async Task GrantNewCatalogItemAsync(GrantCatalogItemCommand request)
+    private async Task GrantNewCatalogItem(GrantCatalogItemCommand request)
     {
         var newInventoryItem = new InventoryItem
         {
@@ -51,7 +51,7 @@ internal class GrantCatalogItemCommandHandler : IRequestHandler<GrantCatalogItem
         newInventoryItem.AddCreatedEvent();
     }
 
-    private async Task UpdateUserInventoryAsync(InventoryItem inventoryItem, GrantCatalogItemCommand request)
+    private async Task UpdateUserInventory(InventoryItem inventoryItem, GrantCatalogItemCommand request)
     {
         inventoryItem.Quantity = request.Quantity;
         inventoryItem = await _dbContext.InventoryItems.FindOneAndReplaceAsync(inventoryItem);

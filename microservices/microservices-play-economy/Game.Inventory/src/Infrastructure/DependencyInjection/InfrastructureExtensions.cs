@@ -25,7 +25,7 @@ public static class InfrastructureExtensions
         services.AddApplicationDbContext(configuration["CatalogCollectionName"], configuration["InventoryCollectionName"]);
         services.AddMassTransit(new Uri(configuration.GetConnectionString("rabbitmq")));
         services.AddSingleton<IDateTimeService, DateTimeService>();
-
+        
         return services;
     }
 
@@ -45,26 +45,26 @@ public static class InfrastructureExtensions
     }
 
     private static IServiceCollection AddApplicationDbContext(
-        this IServiceCollection services,
-        string catalogCollectionName,
+        this IServiceCollection services, 
+        string catalogCollectionName, 
         string inventoryCollectionName)
     {
         services.AddSingleton<IEntityTracker<CatalogItem>, EntityTracker<CatalogItem>>();
         services.AddSingleton<IEntityTracker<InventoryItem>, EntityTracker<InventoryItem>>();
-
+        
         services.AddSingleton<ITrackedRepository<CatalogItem>>(serviceProvider =>
             new MongoRepository<CatalogItem>(
-                serviceProvider.GetRequiredService<IMongoDatabase>(),
-                catalogCollectionName,
+                serviceProvider.GetRequiredService<IMongoDatabase>(), 
+                catalogCollectionName, 
                 serviceProvider.GetRequiredService<IEntityTracker<CatalogItem>>()));
-
+        
         services.AddSingleton<ITrackedRepository<InventoryItem>>(serviceProvider =>
             new MongoRepository<InventoryItem>(
-                serviceProvider.GetRequiredService<IMongoDatabase>(),
-                inventoryCollectionName,
+                serviceProvider.GetRequiredService<IMongoDatabase>(), 
+                inventoryCollectionName, 
                 serviceProvider.GetRequiredService<IEntityTracker<InventoryItem>>()));
-
-        services.AddSingleton<IApplicationDbContext>(serviceProvider =>
+        
+        services.AddSingleton<IApplicationDbContext>(serviceProvider => 
             new ApplicationDbContext(
                 serviceProvider.GetRequiredService<IMediator>(),
                 serviceProvider.GetRequiredService<ITrackedRepository<CatalogItem>>(),

@@ -33,7 +33,7 @@ public static class InfrastructureExtensions
         BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
         BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
 
-        services.AddSingleton(_ =>
+        services.AddSingleton(serviceProvider =>
             new MongoClient(configuration.GetConnectionString("mongodb"))
                 .GetDatabase(configuration["ServiceName"]));
 
@@ -62,7 +62,7 @@ public static class InfrastructureExtensions
     {
         services.AddMassTransit(bus =>
         {
-            bus.UsingRabbitMq((_, rabbitMqConfig) =>
+            bus.UsingRabbitMq((context, rabbitMqConfig) =>
                 rabbitMqConfig.Host(rabbitMqConnection));
         });
         services.AddOptions<MassTransitHostOptions>()

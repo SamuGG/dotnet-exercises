@@ -21,7 +21,7 @@ public class CatalogItemDeletedConsumer : IConsumer<ICatalogItemDeletedEvent>
     public async Task Consume(ConsumeContext<ICatalogItemDeletedEvent> context)
     {
         var catalogItem = await _dbContext.CatalogItems.FindOneAndDeleteAsync(context.Message.Id);
-
+        
         if (catalogItem is not null)
             catalogItem.AddDeletedEvent();
 

@@ -4,24 +4,18 @@ namespace Game.Common.Application.Common.Exceptions;
 
 public class ValidationException : Exception
 {
-    private readonly Dictionary<string, string[]> _errors = new ();
-
-    public IDictionary<string, string[]> Errors => _errors;
+    public IDictionary<string, string[]> Errors { get; }
 
     public ValidationException()
-        : this("One or more validation failures have occurred.")
-    {}
-
-    public ValidationException(string? message) : base(message)
-    {}
-
-    public ValidationException(string? message, Exception? innerException) : base(message, innerException)
-    {}
+        : base("One or more validation failures have occurred.")
+    {
+        Errors = new Dictionary<string, string[]>();
+    }
 
     public ValidationException(IEnumerable<ValidationFailure> failures)
         : this()
     {
-        _errors = failures
+        Errors = failures
             .GroupBy(e => e.PropertyName, e => e.ErrorMessage)
             .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray());
     }

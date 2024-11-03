@@ -22,9 +22,8 @@ internal class CatalogItemDeletedEventHandler : INotificationHandler<CatalogItem
         IPublishEndpoint publisher = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
 
         await publisher.Publish<ICatalogItemDeletedEvent>(new
-        {
-            notification.Item.Id
-        },
-        cancellationToken);
+        { 
+            Id = notification.Item.Id
+        });
     }
 }

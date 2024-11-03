@@ -26,10 +26,10 @@ public class InventoryItemsController : ControllerBase
     /// A list of inventory items
     /// </returns>
     /// <remarks>
-    /// <para>Sample request:</para>
-    /// <para>
+    /// Sample request:
+    ///
     ///     GET /items/c1ef1215-43f7-455b-8d5a-3a61e62effa5
-    /// </para>
+    ///
     /// </remarks>
     /// <response code="200"></response>
     [HttpGet("{id}")]
@@ -44,15 +44,15 @@ public class InventoryItemsController : ControllerBase
     /// The id of the newly created item
     /// </returns>
     /// <remarks>
-    /// <para>Sample request:</para>
-    /// <para>
+    /// Sample request:
+    ///
     ///     POST /items
     ///     {
     ///        "userId": "c1ef1215-43f7-455b-8d5a-3a61e62effa5",
     ///        "catalogItemId": "7fffed1c-f09c-4e53-a102-55cb501c0102",
     ///        "quantity": 2
     ///     }
-    /// </para>
+    ///
     /// </remarks>
     /// <response code="204">The catalog item was granted successfully</response>
     /// <response code="400">The request parameter is invalid</response>
