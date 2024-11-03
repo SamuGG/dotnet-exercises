@@ -41,6 +41,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Inventory v1"));
+    
+    app.UseCors(corsBuilder => 
+        corsBuilder.WithOrigins(app.Configuration["AllowedOrigin"])
+        .AllowAnyHeader()
+        .AllowAnyMethod());
 }
 else
 {
