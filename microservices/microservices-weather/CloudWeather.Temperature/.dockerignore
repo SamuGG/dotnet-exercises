@@ -1,0 +1,17 @@
+# directories
+**/bin/
+**/obj/
+**/out/
+**/.config
+**/.vscode
+**/.vs
+**/.git
+
+# files
+Dockerfile*
+.dockerignore
+**/*.md
+**/*.http
+**/*.yml
+*.sh
+*.sql

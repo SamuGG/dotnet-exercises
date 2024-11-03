@@ -1,0 +1,9 @@
+GET http://localhost:3000/observation/M14DU?days=30
+
+###
+
+GET http://localhost:4000/observation/M128FH?days=30
+
+###
+
+GET http://localhost:5000/weather-report/M62AP?days=30

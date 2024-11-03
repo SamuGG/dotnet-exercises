@@ -1,0 +1,54 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch DataLoader",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/CloudWeather.DataLoader/bin/Debug/net6.0/CloudWeather.DataLoader.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CloudWeather.DataLoader",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Launch Precipitation",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/CloudWeather.Precipitation/bin/Debug/net6.0/CloudWeather.Precipitation.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CloudWeather.Precipitation",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Launch Temperature",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/CloudWeather.Temperature/bin/Debug/net6.0/CloudWeather.Temperature.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CloudWeather.Temperature",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Launch WeatherReport",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/CloudWeather.Report/bin/Debug/net6.0/CloudWeather.Report.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CloudWeather.Report",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
