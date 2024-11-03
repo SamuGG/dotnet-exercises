@@ -9,10 +9,10 @@ public class CatalogItem : BaseEntity
 
     public string? Name { get; set; }
     public string? Description { get; set; }
-    public decimal Price
-    {
+    public decimal Price 
+    { 
         get => _price;
-        set
+        set 
         {
             if (value < decimal.Zero) throw new NegativePriceException(value);
             _price = value;

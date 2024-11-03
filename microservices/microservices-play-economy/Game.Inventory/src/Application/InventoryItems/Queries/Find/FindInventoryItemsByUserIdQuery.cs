@@ -18,7 +18,7 @@ internal class FindInventoryItemsByUserIdQueryHandler : IRequestHandler<FindInve
     }
 
     public async Task<IReadOnlyCollection<InventoryItemDto>> Handle(
-        FindInventoryItemsByUserIdQuery request,
+        FindInventoryItemsByUserIdQuery request, 
         CancellationToken cancellationToken)
     {
         var userInventoryItems = await _dbContext.InventoryItems
@@ -29,7 +29,7 @@ internal class FindInventoryItemsByUserIdQueryHandler : IRequestHandler<FindInve
         var catalogItems = await _dbContext.CatalogItems
             .FindAllAsync(catalogItem => catalogItemIds.Contains(catalogItem.Id));
 
-        return userInventoryItems.Select(inventoryItem =>
+        return userInventoryItems.Select(inventoryItem => 
         {
             var catalogItem = catalogItems
                 .FirstOrDefault(catalogItem => catalogItem.Id == inventoryItem.CatalogItemId);

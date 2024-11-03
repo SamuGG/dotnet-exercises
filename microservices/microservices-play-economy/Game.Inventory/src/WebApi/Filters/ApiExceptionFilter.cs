@@ -43,10 +43,8 @@ internal class ApiExceptionFilter : ExceptionFilterAttribute
 
     private void HandleUnknownException(ExceptionContext context)
     {
-        var uriBuilder = new UriBuilder(_httpCodeDescription.ServiceUrl)
-        {
-            Fragment = _httpCodeDescription.Http500InternalServerError
-        };
+        var uriBuilder = new UriBuilder(_httpCodeDescription.ServiceUrl);
+        uriBuilder.Fragment = _httpCodeDescription.Http500InternalServerError;
         var problemDetailsTypeUri = uriBuilder.Uri;
 
         var details = new ProblemDetails
@@ -66,10 +64,8 @@ internal class ApiExceptionFilter : ExceptionFilterAttribute
 
     private void HandleValidationException(ExceptionContext context)
     {
-        var uriBuilder = new UriBuilder(_httpCodeDescription.ServiceUrl)
-        {
-            Fragment = _httpCodeDescription.Http400BadRequest
-        };
+        var uriBuilder = new UriBuilder(_httpCodeDescription.ServiceUrl);
+        uriBuilder.Fragment = _httpCodeDescription.Http400BadRequest;
         var problemDetailsTypeUri = uriBuilder.Uri;
 
         var exception = context.Exception as ValidationException;
@@ -84,10 +80,8 @@ internal class ApiExceptionFilter : ExceptionFilterAttribute
 
     private void HandleNotFoundException(ExceptionContext context)
     {
-        var uriBuilder = new UriBuilder(_httpCodeDescription.ServiceUrl)
-        {
-            Fragment = _httpCodeDescription.Http404NotFound
-        };
+        var uriBuilder = new UriBuilder(_httpCodeDescription.ServiceUrl);
+        uriBuilder.Fragment = _httpCodeDescription.Http404NotFound;
         var problemDetailsTypeUri = uriBuilder.Uri;
 
         var exception = context.Exception as NotFoundException;

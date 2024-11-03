@@ -22,16 +22,16 @@ public class MongoRepository<T> : ITrackedRepository<T> where T : BaseEntity
         _entityTracker = entityTracker;
     }
 
-    public T[] GetTrackedEntitiesArray() =>
+    public T[] GetTrackedEntitiesArray() => 
         _entityTracker.GetEntitiesArray();
 
-    public void UntrackAllWithoutDomainEvents() =>
+    public void UntrackAllWithoutDomainEvents() => 
         _entityTracker.RemoveAllWithoutDomainEvents();
 
     public async Task AddNewAsync([NotNull] T entity)
     {
         ArgumentNullException.ThrowIfNull(entity);
-
+        
         await _dbCollection.InsertOneAsync(entity);
         _entityTracker.Track(entity);
     }
@@ -43,19 +43,19 @@ public class MongoRepository<T> : ITrackedRepository<T> where T : BaseEntity
         return entity;
     }
 
-    public Task<T> FindOneAsync(Guid id) =>
-        _dbCollection
+    public async Task<T> FindOneAsync(Guid id) => 
+        await _dbCollection
             .Find(_filterBuilder.Eq(dbEntity => dbEntity.Id, id))
             .Limit(1)
             .FirstOrDefaultAsync();
 
-    public Task<T> FindOneAsync(Expression<Func<T, bool>> filter) =>
-        _dbCollection
+    public async Task<T> FindOneAsync(Expression<Func<T, bool>> filter) => 
+        await _dbCollection
             .Find(filter)
             .Limit(1)
             .FirstOrDefaultAsync();
 
-    public async Task<IReadOnlyCollection<T>> GetAllAsync() =>
+    public async Task<IReadOnlyCollection<T>> GetAllAsync() => 
         await _dbCollection
             .Find(_filterBuilder.Empty)
             .ToListAsync();
@@ -68,13 +68,13 @@ public class MongoRepository<T> : ITrackedRepository<T> where T : BaseEntity
     public async Task<T> FindOneAndReplaceAsync([NotNull] T entity)
     {
         ArgumentNullException.ThrowIfNull(entity);
-
+        
         var replacedEntity = await _dbCollection.FindOneAndReplaceAsync(
-            _filterBuilder.Eq(dbEntity => dbEntity.Id, entity.Id),
+            _filterBuilder.Eq(dbEntity => dbEntity.Id, entity.Id), 
             entity,
             new FindOneAndReplaceOptions<T>()
             {
-                ReturnDocument = ReturnDocument.After
+                ReturnDocument = ReturnDocument.After 
             });
 
         _entityTracker.Track(replacedEntity);

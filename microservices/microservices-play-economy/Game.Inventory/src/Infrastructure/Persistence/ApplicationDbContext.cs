@@ -15,14 +15,14 @@ public class ApplicationDbContext : IApplicationDbContext
     public ITrackedRepository<InventoryItem> InventoryItems { get; init; }
 
     public ApplicationDbContext(
-        [NotNull] IMediator mediator,
-        [NotNull] ITrackedRepository<CatalogItem> catalogItemsRepository,
+        [NotNull] IMediator mediator, 
+        [NotNull] ITrackedRepository<CatalogItem> catalogItemsRepository, 
         [NotNull] ITrackedRepository<InventoryItem> inventoryItemsRepository)
     {
         ArgumentNullException.ThrowIfNull(mediator);
         ArgumentNullException.ThrowIfNull(catalogItemsRepository);
         ArgumentNullException.ThrowIfNull(inventoryItemsRepository);
-
+        
         _mediator = mediator;
         CatalogItems = catalogItemsRepository;
         InventoryItems = inventoryItemsRepository;
@@ -30,7 +30,7 @@ public class ApplicationDbContext : IApplicationDbContext
 
     public async Task SaveChangesAsync()
     {
-        await _mediator.DispatchAndClearDomainEventsAsync(CatalogItems);
-        await _mediator.DispatchAndClearDomainEventsAsync(InventoryItems);
+        await _mediator.DispatchAndClearDomainEvents(CatalogItems);
+        await _mediator.DispatchAndClearDomainEvents(InventoryItems);
     }
 }

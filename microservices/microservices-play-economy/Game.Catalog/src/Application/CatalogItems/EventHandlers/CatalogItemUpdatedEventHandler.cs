@@ -21,12 +21,11 @@ internal class CatalogItemUpdatedEventHandler : INotificationHandler<CatalogItem
         using IServiceScope scope = _serviceProvider.CreateScope();
         IPublishEndpoint publisher = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
 
-        await publisher.Publish<ICatalogItemUpdatedEvent>(new
+        await publisher.Publish<ICatalogItemUpdatedEvent>(new 
         {
-            notification.Item.Id,
-            notification.Item.Name,
-            notification.Item.Description
-        },
-        cancellationToken);
+            Id = notification.Item.Id,
+            Name = notification.Item.Name,
+            Description = notification.Item.Description
+        });
     }
 }

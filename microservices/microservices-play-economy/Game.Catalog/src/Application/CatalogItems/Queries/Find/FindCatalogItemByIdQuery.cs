@@ -26,9 +26,9 @@ internal class FindCatalogItemByIdQueryHandler : IRequestHandler<FindCatalogItem
     public async Task<CatalogItemDto> Handle(FindCatalogItemByIdQuery request, CancellationToken cancellationToken)
     {
         var catalogItem = await _dbContext.CatalogItems.FindOneAsync(request.Id);
-        if (catalogItem is null)
+        if (catalogItem is null) 
             throw new NotFoundException(nameof(CatalogItem), request.Id);
-
+        
         return _mapper.Map<CatalogItem, CatalogItemDto>(catalogItem);
     }
 }

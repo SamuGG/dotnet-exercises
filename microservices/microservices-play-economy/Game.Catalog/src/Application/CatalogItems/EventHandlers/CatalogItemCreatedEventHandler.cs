@@ -23,10 +23,9 @@ internal class CatalogItemCreatedEventHandler : INotificationHandler<CatalogItem
 
         await publisher.Publish<ICatalogItemCreatedEvent>(new
         {
-            notification.Item.Id,
-            notification.Item.Name,
-            notification.Item.Description
-        },
-        cancellationToken);
+            Id = notification.Item.Id,
+            Name = notification.Item.Name,
+            Description = notification.Item.Description
+        });
     }
 }
