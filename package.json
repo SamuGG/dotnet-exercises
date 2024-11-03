@@ -1,21 +1,19 @@
 {
-  "name": "samugg-project-template",
-  "packageManager": "yarn@3.3.0",
+  "name": "dotnet-training",
+  "packageManager": "yarn@4.4.1",
   "private": true,
-  "description": ".NET Exercises",
-  "version": "0.0.0",
-  "license": "ISC",
+  "description": ".NET Training",
   "repository": {
     "type": "git",
-    "url": "github:SamuGG/dotnet-exercises"
+    "url": "github:SamuGG/dotnet-training"
   },
   "scripts": {
-    "postinstall": "husky install"
+    "postinstall": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "*",
-    "@commitlint/config-conventional": "*",
-    "husky": "*",
-    "lint-staged": "*"
+    "@commitlint/cli": "19.5.0",
+    "@commitlint/config-conventional": "19.5.0",
+    "husky": "9.1.6",
+    "lint-staged": "15.2.10"
   }
 }
