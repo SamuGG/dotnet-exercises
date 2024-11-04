@@ -30,6 +30,24 @@ public class ServiceCollection : Collection<ServiceDescriptor>
         return this;
     }
 
+    public ServiceCollection AddSingleton<TImplementation>()
+        where TImplementation : class
+    {
+        ServiceDescriptor serviceDescriptor = CreateServiceDescriptor<TImplementation, TImplementation>(ServiceLifetime.Singleton);
+        Add(serviceDescriptor);
+
+        return this;
+    }
+
+    public ServiceCollection AddTransient<TImplementation>()
+        where TImplementation : class
+    {
+        ServiceDescriptor serviceDescriptor = CreateServiceDescriptor<TImplementation, TImplementation>(ServiceLifetime.Transient);
+        Add(serviceDescriptor);
+
+        return this;
+    }
+
     private static ServiceDescriptor CreateServiceDescriptor<TService, TImplementation>(ServiceLifetime lifetime)
     {
         return new ServiceDescriptor

@@ -2,7 +2,10 @@
 using ServiceContainer;
 
 var services = new ServiceCollection();
+
+// Flip these lines to register with/without interface
 services.AddSingleton<IConsoleWriter, ConsoleWriter>();
+// services.AddSingleton<ConsoleWriter>();
 
 // Flip these lines to see different results
 services.AddSingleton<IGuidProvider, GuidProvider>();
@@ -10,6 +13,7 @@ services.AddSingleton<IGuidProvider, GuidProvider>();
 
 var serviceProvider = services.BuildServiceProvider();
 var writerService = serviceProvider.GetService<IConsoleWriter>();
+// var writerService = serviceProvider.GetService<ConsoleWriter>();
 var guidGenerator1 = serviceProvider.GetService<IGuidProvider>();
 var guidGenerator2 = serviceProvider.GetService<IGuidProvider>();
 
