@@ -3,9 +3,10 @@ using ServiceContainer;
 
 var services = new ServiceCollection();
 
-// Flip these lines to register with/without interface
+// Flip these lines to register a service using different overloads
 services.AddSingleton<IConsoleWriter, ConsoleWriter>();
 // services.AddSingleton<ConsoleWriter>();
+// services.AddSingleton(serviceProvider => new ConsoleWriter());
 
 // Flip these lines to see different results
 services.AddSingleton<IGuidProvider, GuidProvider>();

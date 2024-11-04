@@ -48,6 +48,36 @@ public class ServiceCollection : Collection<ServiceDescriptor>
         return this;
     }
 
+    public ServiceCollection AddSingleton<TImplementation>(Func<IServiceProvider, TImplementation> serviceFactory)
+        where TImplementation : class
+    {
+        var serviceDescriptor = new ServiceDescriptor
+        {
+            ServiceType = typeof(TImplementation),
+            ImplementationType = typeof(TImplementation),
+            ImplementationFactory = serviceFactory,
+            Lifetime = ServiceLifetime.Singleton
+        };
+        Add(serviceDescriptor);
+
+        return this;
+    }
+
+    public ServiceCollection AddTransient<TImplementation>(Func<IServiceProvider, TImplementation> serviceFactory)
+        where TImplementation : class
+    {
+        var serviceDescriptor = new ServiceDescriptor
+        {
+            ServiceType = typeof(TImplementation),
+            ImplementationType = typeof(TImplementation),
+            ImplementationFactory = serviceFactory,
+            Lifetime = ServiceLifetime.Transient
+        };
+        Add(serviceDescriptor);
+
+        return this;
+    }
+
     private static ServiceDescriptor CreateServiceDescriptor<TService, TImplementation>(ServiceLifetime lifetime)
     {
         return new ServiceDescriptor
