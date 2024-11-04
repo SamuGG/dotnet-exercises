@@ -11,6 +11,8 @@ public class ServiceCollection : Collection<ServiceDescriptor>
     }
 
     public ServiceCollection AddSingleton<TService, TImplementation>()
+        where TService : class
+        where TImplementation : class, TService
     {
         ServiceDescriptor serviceDescriptor = CreateServiceDescriptor<TService, TImplementation>(ServiceLifetime.Singleton);
         Add(serviceDescriptor);
@@ -19,6 +21,8 @@ public class ServiceCollection : Collection<ServiceDescriptor>
     }
 
     public ServiceCollection AddTransient<TService, TImplementation>()
+        where TService : class
+        where TImplementation : class, TService
     {
         ServiceDescriptor serviceDescriptor = CreateServiceDescriptor<TService, TImplementation>(ServiceLifetime.Transient);
         Add(serviceDescriptor);
