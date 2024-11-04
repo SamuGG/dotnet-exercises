@@ -1,20 +1,23 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ServiceConsumer.Services;
+using ServiceContainer;
 
 var services = new ServiceCollection();
 services.AddSingleton<IConsoleWriter, ConsoleWriter>();
+
+// Flip these lines to see different results
+services.AddSingleton<IGuidProvider, GuidProvider>();
+// services.AddTransient<IGuidProvider, GuidProvider>();
+
 var serviceProvider = services.BuildServiceProvider();
-var service = serviceProvider.GetRequiredService<IConsoleWriter>();
-service.WriteLine("Hello");
+var writerService = serviceProvider.GetService<IConsoleWriter>();
+var guidGenerator1 = serviceProvider.GetService<IGuidProvider>();
+var guidGenerator2 = serviceProvider.GetService<IGuidProvider>();
 
-interface IConsoleWriter
-{
-    void WriteLine(string message);
-}
+if (writerService is null)
+    return;
 
-sealed class ConsoleWriter : IConsoleWriter
-{
-    public void WriteLine(string message)
-    {
-        Console.WriteLine(message);
-    }
-}
+if (guidGenerator1 is null || guidGenerator2 is null)
+    return;
+
+writerService.WriteLine(guidGenerator1.Value.ToString());
+writerService.WriteLine(guidGenerator2.Value.ToString());

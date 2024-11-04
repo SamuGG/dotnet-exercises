@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceConsumer", "ServiceConsumer\ServiceConsumer.csproj", "{B50B7B71-E96F-4245-9ECF-9F5441BE3311}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceContainer", "ServiceContainer\ServiceContainer.csproj", "{0D65A367-99F0-47D1-8F88-FDFEBE17323C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B50B7B71-E96F-4245-9ECF-9F5441BE3311}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B50B7B71-E96F-4245-9ECF-9F5441BE3311}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B50B7B71-E96F-4245-9ECF-9F5441BE3311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D65A367-99F0-47D1-8F88-FDFEBE17323C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D65A367-99F0-47D1-8F88-FDFEBE17323C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D65A367-99F0-47D1-8F88-FDFEBE17323C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D65A367-99F0-47D1-8F88-FDFEBE17323C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
