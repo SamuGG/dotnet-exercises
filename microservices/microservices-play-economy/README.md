@@ -10,9 +10,9 @@ We'll use 4 microservices: Catalog, Inventory, Identity and trading.
 
 Each microservice has its own exclusive database and no access to each other databases.
 
-For interservice communication, we'll introduce a message broker that will allow the services to publish and consume messages asynchronously.
+For inter-service communication, we'll introduce a message broker that will allow the services to publish and consume messages asynchronously.
 
-All the authentication and authorization accross the system will be handled by the Identity microservice.
+All the authentication and authorization across the system will be handled by the Identity microservice.
 
 A front-end portal will allow a friendly interface for interacting with all services.
 
