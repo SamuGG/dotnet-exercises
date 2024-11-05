@@ -19,14 +19,17 @@
     "hte"
   ],
   "ignorePaths": [
-    "node_modules",
-    "**/bin",
-    "**/obj",
     "*.lock",
+    "**/bin",
+    "**/lib",
+    "**/obj",
     "/.*rc",
     "/cspell.json",
     "/package*.json",
+    "appsettings*.json",
+    "launchSettings.json",
+    "LICENSE*",
     "Makefile",
-    "LICENSE"
+    "node_modules"
   ]
 }
