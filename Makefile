@@ -67,7 +67,6 @@ lint-markdown: check-interactive set-interactive ## Lint markdown files
 	@echo "- Linting markdown files..."
 	docker run --rm $(DOCKER_INTERACTIVE_FLAGS) \
 		-v $(MOUNT_PATH):/workdir \
-		--entrypoint="markdownlint-cli2-config" \
 		davidanson/markdownlint-cli2:$(VERSION_MARKDOWNLINT)
 	@echo "✔ Done"
 
