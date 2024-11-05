@@ -54,13 +54,14 @@ spell-check: check-interactive set-interactive ## Check spelling
 
 .PHONY: toc-markdown
 toc-markdown: ## Generate markdown table of contents
-	@echo "- Generating TOCs..."
-	docker run --rm $(DOCKER_INTERACTIVE_FLAGS) \
-		-v $(MOUNT_PATH):/workdir \
-		-w /workdir \
-		peterdavehello/npm-doctoc:$(VERSION_DOCTOC) \
-		doctoc --title "## Table of Contents ##" README.md
-	@echo "✔ Done"
+#	@echo "- Generating TOCs..."
+#	docker run --rm $(DOCKER_INTERACTIVE_FLAGS) \
+#		-v $(MOUNT_PATH):/workdir \
+#		-w /workdir \
+#		peterdavehello/npm-doctoc:$(VERSION_DOCTOC) \
+#		doctoc --title "## Table of Contents ##" README.md
+#	@echo "✔ Done"
+	@echo "- Ignoring TOC generation"
 
 .PHONY: lint-markdown
 lint-markdown: check-interactive set-interactive ## Lint markdown files
