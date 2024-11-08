@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.State", "sta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Bridge", "bridge\DesignPatterns.Bridge.csproj", "{CE73EDD0-004E-41EE-90C4-FF7405B83610}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Prototype", "prototype\DesignPatterns.Prototype.csproj", "{724636F9-17F8-4889-B853-9A232497DB80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{CE73EDD0-004E-41EE-90C4-FF7405B83610}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE73EDD0-004E-41EE-90C4-FF7405B83610}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE73EDD0-004E-41EE-90C4-FF7405B83610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724636F9-17F8-4889-B853-9A232497DB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724636F9-17F8-4889-B853-9A232497DB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724636F9-17F8-4889-B853-9A232497DB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724636F9-17F8-4889-B853-9A232497DB80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
