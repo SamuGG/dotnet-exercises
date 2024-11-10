@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Bridge", "br
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Prototype", "prototype\DesignPatterns.Prototype.csproj", "{724636F9-17F8-4889-B853-9A232497DB80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Iterator", "iterator\DesignPatterns.Iterator.csproj", "{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{724636F9-17F8-4889-B853-9A232497DB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724636F9-17F8-4889-B853-9A232497DB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724636F9-17F8-4889-B853-9A232497DB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
