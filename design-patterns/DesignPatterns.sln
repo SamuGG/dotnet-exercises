@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Prototype", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Iterator", "iterator\DesignPatterns.Iterator.csproj", "{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.TemplateMethod", "template-method\DesignPatterns.TemplateMethod.csproj", "{4B2A45CC-164C-45F8-A3BF-221A1EF027F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ABEC529-8C0D-48A7-B0CC-B1ED8D90A465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B2A45CC-164C-45F8-A3BF-221A1EF027F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B2A45CC-164C-45F8-A3BF-221A1EF027F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B2A45CC-164C-45F8-A3BF-221A1EF027F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B2A45CC-164C-45F8-A3BF-221A1EF027F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
