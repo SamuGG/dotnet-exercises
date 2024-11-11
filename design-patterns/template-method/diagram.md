@@ -6,8 +6,8 @@ title: Template method Design Pattern
 ---
 classDiagram
     direction LR
-    ConcreteClass1 ..> AbstractClass: extends
-    ConcreteClass2 ..> AbstractClass: extends
+    ConcreteClass1 --> AbstractClass: extends
+    ConcreteClass2 --> AbstractClass: extends
     class AbstractClass {
         <<abstract>>
         + TemplateMethod()
