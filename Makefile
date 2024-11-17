@@ -16,11 +16,22 @@ explain:
 ###
 
 .PHONY: clean-everything
-clean-everything: ## Clean the repo
-	@echo "Cleaning the repo"
+clean-everything: clean-packages clean-solution clean-containers ## Clean the repo
+
+.PHONY: clean-packages
+clean-packages: ## Clean installed packages
+	@echo "Cleaning packages installed"
 	yarn cache clean
 	rm -fr node_modules
+	@echo "✔ Done"
+
+.PHONY: clean-solution
+clean-solution: ## Clean .NET solution
 	dotnet clean functional-programming/csharp/src/FunctionalProgramming.Exercises.csproj
+
+.PHONY: clean-containers
+clean-containers: ## Clean Docker containers
+	@echo "Cleaning Docker containers"
 	docker rmi $(shell docker images --format '{{.Repository}}:{{.Tag}}' | grep -e 'ghcr.io/streetsidesoftware/cspell' -e 'peterdavehello/npm-doctoc' -e 'davidanson/markdownlint-cli2') | true
 	@echo "✔ Done"
 
