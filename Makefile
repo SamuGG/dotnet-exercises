@@ -6,7 +6,7 @@ MOUNT_PATH := $(shell echo $${LOCAL_WORKSPACE_FOLDER:-$$(pwd)})
 DOCKER_INTERACTIVE := true
 VERSION_CSPELL ?= latest
 VERSION_MARKDOWNLINT ?= latest
-SOLUTION_PATH ?= functional-programming/csharp
+SOLUTION_PATH ?= design-patterns
 
 .PHONY: explain
 explain:
