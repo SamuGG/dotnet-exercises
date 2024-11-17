@@ -6,6 +6,7 @@ MOUNT_PATH := $(shell echo $${LOCAL_WORKSPACE_FOLDER:-$$(pwd)})
 DOCKER_INTERACTIVE := true
 VERSION_CSPELL ?= latest
 VERSION_MARKDOWNLINT ?= latest
+SOLUTION_PATH ?= functional-programming/csharp
 
 .PHONY: explain
 explain:
@@ -27,7 +28,13 @@ clean-packages: ## Clean installed packages
 
 .PHONY: clean-solution
 clean-solution: ## Clean .NET solution
-	dotnet clean functional-programming/csharp/src/FunctionalProgramming.Exercises.csproj
+ifdef SOLUTION_PATH
+	@echo "Cleaning solution files from $(SOLUTION_PATH)"
+	@(cd $(SOLUTION_PATH) && dotnet clean --nologo)
+	@echo "✔ Done"
+else
+	@echo "SOLUTION_PATH is not set, skipping dotnet clean"
+endif
 
 .PHONY: clean-containers
 clean-containers: ## Clean Docker containers
