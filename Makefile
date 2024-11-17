@@ -15,8 +15,8 @@ explain:
 ##@ Cleanup
 ###
 
-.PHONY: clean
-clean: ## Clean the repo
+.PHONY: clean-everything
+clean-everything: ## Clean the repo
 	@echo "Cleaning the repo"
 	yarn cache clean
 	rm -fr node_modules
@@ -28,8 +28,8 @@ clean: ## Clean the repo
 ##@ Installation
 ###
 
-.PHONY: install
-install: install-deps
+.PHONY: install-everything
+install-everything: install-packages ## Install package manager and packages
 
 .PHONY: init-pkg-manager
 init-pkg-manager: ## Initialize package manager
@@ -37,9 +37,9 @@ init-pkg-manager: ## Initialize package manager
 	corepack enable
 	@echo "✔ Done"
 
-.PHONY: install-deps
-install-deps: init-pkg-manager ## Install Node dependencies
-	@echo "Installing Node dependencies"
+.PHONY: install-packages
+install-packages: init-pkg-manager ## Install Node packages
+	@echo "Installing Node packages"
 	yarn install
 	@echo "✔ Done"
 
@@ -47,8 +47,8 @@ install-deps: init-pkg-manager ## Install Node dependencies
 ##@ Validation
 ###
 
-.PHONY: spell-check
-spell-check: check-interactive set-interactive ## Check spelling
+.PHONY: check-spelling
+check-spelling: check-interactive set-interactive ## Check spelling in markdown files
 	@echo "- Spell-checking..."
 	docker run --rm $(DOCKER_INTERACTIVE_FLAGS) \
 		-v $(MOUNT_PATH):/workdir \

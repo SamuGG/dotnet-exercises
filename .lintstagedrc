@@ -1,6 +1,6 @@
 {
   "*.md": [
     "make lint-markdown DOCKER_INTERACTIVE=false",
-    "make spell-check DOCKER_INTERACTIVE=false"
+    "make check-spelling DOCKER_INTERACTIVE=false"
   ]
 }
