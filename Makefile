@@ -31,10 +31,15 @@ clean: ## Clean the repo
 .PHONY: install
 install: install-deps
 
-.PHONY: install-deps
-install-deps: ## Install Node dependencies
-	@echo "Installing Node dependencies"
+.PHONY: init-pkg-manager
+init-pkg-manager: ## Initialize package manager
+	@echo "Initializing Yarn package manager"
 	corepack enable
+	@echo "✔ Done"
+
+.PHONY: install-deps
+install-deps: init-pkg-manager ## Install Node dependencies
+	@echo "Installing Node dependencies"
 	yarn install
 	@echo "✔ Done"
 
