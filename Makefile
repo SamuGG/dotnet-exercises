@@ -82,6 +82,10 @@ lint-markdown: check-interactive set-interactive ## Lint markdown files
 		davidanson/markdownlint-cli2:$(VERSION_MARKDOWNLINT)
 	@echo "✔ Done"
 
+.PHONY: build-solution
+build-solution: ## Build .NET solution
+	@(cd $(SOLUTION_PATH) && dotnet build --nologo --no-restore)
+
 ###
 # Docker flags configuration
 # This allows us to see the results from container executables (like cspell)

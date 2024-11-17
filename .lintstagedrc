@@ -2,5 +2,8 @@
   "*.md": [
     "make lint-markdown DOCKER_INTERACTIVE=false",
     "make check-spelling DOCKER_INTERACTIVE=false"
+  ],
+  "*.cs": [
+    "make build-solution"
   ]
 }
