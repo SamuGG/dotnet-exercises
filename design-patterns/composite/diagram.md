@@ -7,9 +7,9 @@ title: Composite Design Pattern
 classDiagram
     direction TB
     Client ..> Component: uses
-    Composite ..> Component: extends
+    Composite --> Component: extends
     Composite --o Component: has
-    Leaf ..> Component: extends
+    Leaf --> Component: extends
     class Client {
         + Operation(extrinsicData)
     }
@@ -21,14 +21,14 @@ classDiagram
         + GetChild(index)
     }
     class Composite {
-        - children: List<Component>
+        - children: List~Component~
         + Operation()
         + Add(Component)
         + Remove(Component)
         + GetChild(index)
     }
     class Leaf {
-        + Property: string
+        + Property : string
         + Operation()
     }
 ```
