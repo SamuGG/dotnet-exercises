@@ -50,14 +50,14 @@ clean-containers: ## Clean Docker containers
 install-everything: install-packages ## Install package manager and packages
 
 .PHONY: init-pkg-manager
-init-yarn: ## Initialize package manager
+init-pkg-manager: ## Initialize package manager
 	@echo "Initializing Yarn package manager"
 	corepack enable
 	@echo "✔ Done"
 
-.PHONY: install-deps
-install-deps: init-pkg-manager ## Install Node dependencies
-	@echo "Installing Node dependencies"
+.PHONY: install-packages
+install-packages: init-pkg-manager ## Install Node packages
+	@echo "Installing Node packages"
 	yarn install
 	@echo "✔ Done"
 
