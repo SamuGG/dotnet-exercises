@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Mediator", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Factory", "factory\DesignPatterns.Factory.csproj", "{545703A9-3625-4FFB-A48B-A791B28822F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Command", "command\DesignPatterns.Command.csproj", "{BFD12130-5B01-4A91-86DE-987DE079E88C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,5 +104,9 @@ Global
 		{545703A9-3625-4FFB-A48B-A791B28822F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{545703A9-3625-4FFB-A48B-A791B28822F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{545703A9-3625-4FFB-A48B-A791B28822F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD12130-5B01-4A91-86DE-987DE079E88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD12130-5B01-4A91-86DE-987DE079E88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD12130-5B01-4A91-86DE-987DE079E88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD12130-5B01-4A91-86DE-987DE079E88C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
